@@ -12,11 +12,13 @@ class Routeur {
     }
 
     public function routerRequest(){
-        if($_GET["action"] === "accueil"){
+        if(isset($_GET["action"])){
+            if($_GET["action"] == "accueil"){
                 $this->ctrlAccueil->accueil();
-            }elseif ($_GET["action"] === "blog"){
+            }elseif ($_GET["action"] == "blog"){
                 $this->ctrlBlog->blog();
             }
-            else $this->ctrlAccueil->accueil();
+           
+        } else $this->ctrlAccueil->accueil();
     }
 }
