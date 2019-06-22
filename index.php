@@ -7,7 +7,7 @@ require "controlleur/ControlleurBlog.php";
 $controlleurBlog = new ControlleurBlog();
 $articl = $controlleurBlog->blog();*/
 
-require "controlleur/Routeur.php";
+require "controller/Router.php";
 
-$router = new Routeur();
+$router = new Router();
 $router->routerRequest();

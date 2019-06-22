@@ -1,5 +1,5 @@
-<?php $title =" L'auteur "?>
-<?php $body = "about"?>
+<?php $title =" L'auteur ";
+ $body = "about"?>
 
 <?php ob_start()?>
 <div class="autor-content">

@@ -1,4 +1,4 @@
-<?php abstract class Modele{
+<?php abstract class Model{
 
   private $bdd;
 
