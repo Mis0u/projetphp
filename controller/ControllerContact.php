@@ -3,6 +3,6 @@
 class ControllerContact {
 
     public function contact(){
-        require "view/viewContact" ;
+        require "view/viewContact.php" ;
     }
 }

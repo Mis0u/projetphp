@@ -5,8 +5,9 @@ body{
 }
 /*HEADER*/
 .accueil header .bg{
-    height: 400px;
+    height: 100vh;
     max-width: 100%;
+    background-image: url("lib/images/alaska.jpg")
 
 }
 
@@ -160,13 +161,20 @@ section{
     
 }
 
+/*FORM*/
 
+.contact form{
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-
-
-
-
-
-
+        div{
+            display: inline-flex;
+            flex-direction: column;
+            width: 36%;
+        }
+}
 
 

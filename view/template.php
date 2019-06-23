@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../style.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="../style.css" rel="stylesheet">
     <title><?= $title ?></title>
 </head>
 <body class="<?= $body ?>">
@@ -16,7 +16,7 @@
                 <li><a href="/projetphp/index.php/">Accueil</a></li>
                 <li><a href="/projetphp/index.php/about">A propos de l'auteur</a></li>
                 <li><a href="/projetphp/index.php/blog">Blog</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/projetphp/index.php/contact">Contact</a></li>
             </ul>
         </nav> 
         <div class="bg"></div>            
