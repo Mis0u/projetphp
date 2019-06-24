@@ -19,13 +19,13 @@ class Router {
 
     public function routerRequest(){
 
-        if ($_SERVER['REQUEST_URI'] === "/projetphp/index.php"){
+        if (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/"){
                 $this->ctrlHome->homepage();
-            }elseif ($_SERVER['REQUEST_URI'] === "/projetphp/index.php/blog"){
+            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/blog"){
                 $this->ctrlBlog->blog();
-            }elseif ($_SERVER['REQUEST_URI'] === "/projetphp/index.php/about"){
+            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/about"){
                 $this->ctrlAbout->about();
-            }elseif ($_SERVER['REQUEST_URI'] === "/projetphp/index.php/contact"){
+            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/contact"){
                 $this->ctrlcontact->contact();
             }
            
