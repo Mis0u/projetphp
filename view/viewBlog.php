@@ -3,20 +3,20 @@
 
 
 <?php ob_start()?>
-<article>
-    <div class="box-content">
-    <?php if(isset($articles)) :?>
+
+<?php if(isset($articles)) :?>
     <?php foreach($articles as $article) : ?>
-        <?= "<h1>" . $article["title"] . "</h1>"?>
+    <div class="box-content">
+        <?= "<h1>" . $article["title"] . "<span>  " . $article["date_article"] . "</span> </h1>"?>
         <p> <?= $article["content"]?></p>
     </div>
-    <p> <?= $article["date_article"]?></p>
-</article>
-<?php endforeach ?>
+    <p><a href="?action=<?= $article['id_article'] ?>">Voir plus </a></p>
+
+    <?php endforeach ?>
     <?php 
     else:
         echo "<h1>Erreur</h1>";
-        endif ?>
+endif ?>
 
 <?php $content= ob_get_clean()?>
 

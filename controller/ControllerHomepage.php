@@ -1,12 +1,13 @@
 <?php
 
+namespace Control;
+use Model\ArticleModel;
 
 class ControllerHomepage{
 
     public function homepage(){
-        require "model/ArticleModel.php";
         $articleModel = new ArticleModel();
-        $articles=$articleModel->getLastArticle();
+        $article=$articleModel->getLastArticle();
         require "view/viewHomepage.php";
     }
 }

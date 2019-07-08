@@ -1,6 +1,7 @@
 <?php 
 
-require "model/Model.php";
+namespace Model;
+
 
 class CommModel extends Model{
 

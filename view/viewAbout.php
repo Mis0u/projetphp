@@ -21,7 +21,7 @@
     Numquam eaque molestias nisi, quis dolorum nobis minima ipsa rerum quasi voluptates odit a voluptate corporis distinctio pariatur beatae aliquid maxime nam aperiam fugit, eligendi sed? Illum quia architecto autem.
     Accusantium dicta voluptatem error suscipit, quaerat repudiandae eum explicabo reprehenderit veniam natus, animi doloribus ipsa harum reiciendis rerum! Sequi illo minima consequuntur in commodi tenetur repellendus fugit. Ad, officia porro?
     </p>
-    <p><a href="#">Découvrez les chapitres...</a></p>
+    <p><a href="/projetphp/index.php/blog">Découvrez les chapitres...</a></p>
 </div>
 
 <?php $content = ob_get_clean()?>

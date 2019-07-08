@@ -1,5 +1,7 @@
 <?php
 
+namespace Control;
+
 class ControllerAbout {
 
   public function about(){

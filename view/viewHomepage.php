@@ -5,12 +5,13 @@
 <?php ob_start()?>
     <div class="box-content">
 
-    <?php if(isset($articles)) :?>
-    <?php foreach($articles as $article) : ?>
-        <?= "<h1>" . $article["title"] . "</h1>"?>
-        <p> <?= $article["content"]?></p>
+    <?php if(isset($article)) :?>
+    <?php foreach($article as $lastArticle) : ?>
+        <?= "<h1>" . $lastArticle["title"] . "</h1>"?>
+        <?= "<p> <span>" . $lastArticle["date_article"] . "</span> </p>"?>
+        <p> <?= $lastArticle["content"]?></p>
     </div>
-    <p> <?= $article["date_article"]?></p>
+    <p><a href="#">Voir plus</a></p>
 <?php endforeach ?>
     <?php else :
         echo "<h1>Erreur</h1>";

@@ -1,5 +1,7 @@
 <?php
 
+namespace Control;
+
 class ControllerContact {
 
     public function contact(){
