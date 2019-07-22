@@ -13,10 +13,10 @@
             <div class="logo"><img src="/lib/images/logo.png"/></div>
             <ul>
                 <li class="hamburger"></li>
-                <li><a href="/projetphp/index.php/">Accueil</a></li>
-                <li><a href="/projetphp/index.php/about">A propos de l'auteur</a></li>
-                <li><a href="/projetphp/index.php/blog">Blog</a></li>
-                <li><a href="/projetphp/index.php/contact">Contact</a></li>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="about">A propos de l'auteur</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </nav> 
         <div class="bg"></div>            

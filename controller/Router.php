@@ -7,7 +7,7 @@ class Router {
     private $ctrlBlog;
     private $ctrlAbout;
     private $ctrlContact;
-    private$ctrlArticle;
+    private $ctrlArticle;
 
     public function __construct(){
         $this->ctrlHome = new ControllerHomepage();
@@ -19,16 +19,21 @@ class Router {
 
     public function routerRequest(){
 
-        if (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/"){
+        if (htmlspecialchars($_SERVER['REQUEST_URI']) === "/index.php"){
             $this->ctrlHome->homepage();
-        } elseif(htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/article=1"){
-            $this->ctrlArticle->article("1");
-        }
-            elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/blog"){
+        }   else if (isset($_GET['article'])){
+                    if (isset($_GET['id'])){
+                        $idArticle = intval($_GET['id']);
+                        if ($idArticle != 0) {
+                                $this->ctrlArticle->getComments($idArticle);
+                        }
+                    }                    
+            }
+            elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/blog"){
                 $this->ctrlBlog->blog();
-            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/about"){
+            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/about"){
                 $this->ctrlAbout->about();
-            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/projetphp/index.php/contact"){
+            }elseif (htmlspecialchars($_SERVER['REQUEST_URI']) === "/contact"){
                 $this->ctrlcontact->contact();
             }
            

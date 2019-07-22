@@ -3,18 +3,29 @@
 $title = "Article";
 $body = "about article";
 
-ob_start(); ?>
-<div class="article">
-    <h1> <?= $article["title"] . $article["date_article"]; ?> </h1>
+ob_start()?>
+<div class = "article">
+                <div class="box-article">
+                        <?= "<h1>" . $displayArticle["title"] . "<span>  " . $displayArticle["date_article"] . "</span> </h1>"?>
+                        <p> <?= $displayArticle["content"]?></p>
+                </div>
+        <?php foreach ($displayComments as $comment):?>
+                <div class = "box-comments">
+                        <?= "<h1>" . $comment["author"] . "<span>  " . $comment["date_comm"] . "</span> </h1>"?>
+                        <p> <?= $comment["content"]?></p>
+                </div>
+        <?php endforeach ; ?>
 
-    <p> <?= $article["content"] ; ?> </p>
 </div>
-<?php foreach($comments as $comment): ?>
-    <div class="comments">
-    <h1> <?= $comment["author"] . $comment["date_comm"] ?> </h1>
-    <p> <?= $comment["content"] ?> </p>
-    <?php endforeach ?>
 
-<?php $content = ob_get_clean() ?>
+<div class = "pagination">
+        <?php 
+        echo "Pages :";
+        for ($i = 1; $i <= $nbPages; $i++){
+                echo '<a href="/blog?article&id='.$displayArticle["id_article"].'&page='.$i.'"> '.$i.'</a>';
+        }
+        ?>
+</div>
+<?php $content = ob_get_clean() ;
 
-<?php require "template.php" ?>
+require "template.php" ?>

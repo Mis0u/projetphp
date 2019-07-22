@@ -5,11 +5,11 @@
 <?php ob_start()?>
     <div class="box-content">
 
-    <?php if(isset($article)) :?>
-    <?php foreach($article as $lastArticle) : ?>
-        <?= "<h1>" . $lastArticle["title"] . "</h1>"?>
-        <?= "<p> <span>" . $lastArticle["date_article"] . "</span> </p>"?>
-        <p> <?= $lastArticle["content"]?></p>
+    <?php if(isset( $lastArticle)) :?>
+    <?php foreach( $lastArticle as $lastArt) : ?>
+        <?= "<h1>" . $lastArt["title"] . "</h1>"?>
+        <?= "<p> <span>" . $lastArt["date_article"] . "</span> </p>"?>
+        <p> <?= $lastArt["content"]?></p>
     </div>
     <p><a href="#">Voir plus</a></p>
 <?php endforeach ?>

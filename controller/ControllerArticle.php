@@ -1,16 +1,33 @@
-<?php
+<?php 
 
 namespace Control;
 
-class ControllerArticle{
+use Model\ArticleModel;
+use Model\CommentsModel;
 
-    public function article($id_article){
-        require "model/ArticleModel.php";
-        require "model/CommModel.php";
-        $articleModel = new ArticleModel();
-        $commModel = new CommModel();
-        $article = $articleModel->getArticle($id_article);
-        $comments = $commModel->getComm($id_article);
-        require "view/viewArticle";
-    }
+class ControllerArticle {
+
+  const COMMENT_PER_PAGE = 5;
+
+  public function getComments($idArticle){
+    $article = new ArticleModel();
+    $displayArticle = $article->getArticle($idArticle);
+    $comments =  new CommentsModel();  
+    $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
+    $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
+    require "view/viewArticle.php";
+  }
+
+  private function getFirstResult($idArticle, $nbPages){    
+    return ($this->currentPage($nbPages) - 1) * self::COMMENT_PER_PAGE ;
+  }
+
+  private function currentPage($nbPages){
+    if(isset($_GET['page']) AND !empty($_GET['page'])){
+      $currentPage = intval($_GET['page']);
+      return $currentPage > $nbPages ? $nbPages : $currentPage;
+    } 
+     
+    return 1;
+  }
 }

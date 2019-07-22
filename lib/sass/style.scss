@@ -2,6 +2,8 @@ body{
     padding:0;
     margin:0;
     background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+    display: flex;
+    flex-direction: column;
 }
 /*HEADER*/
 .accueil header .bg{
@@ -161,6 +163,11 @@ section{
     }
     
 }
+/*Article*/
+.article p, .article h1, .article div.pagination{
+    color:#fff
+}
+
 
 /*FORM*/
 

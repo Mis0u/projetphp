@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  display: flex;
+  flex-direction: column;
 }
 
 /*HEADER*/
@@ -148,6 +150,11 @@ section .blog-about p:last-child a:hover:before {
 }
 section .blog-about p:last-child a:hover {
   color: #284052;
+}
+
+/*Article*/
+.article p, .article h1, .article div.pagination {
+  color: #fff;
 }
 
 /*FORM*/

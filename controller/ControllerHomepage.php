@@ -7,7 +7,7 @@ class ControllerHomepage{
 
     public function homepage(){
         $articleModel = new ArticleModel();
-        $article=$articleModel->getLastArticle();
+        $lastArticle=$articleModel->getLastArticle();
         require "view/viewHomepage.php";
     }
 }

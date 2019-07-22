@@ -8,8 +8,8 @@ abstract class Model{
   private $bdd;
 
     protected function executeRequest($data, $param = null) {
-        if ($param ==null){
-            $result= $this->getBdd()->query($data);
+        if ($param == null){
+            $result = $this->getBdd()->query($data);
         }else{
             $result= $this->getBdd()->prepare($data);
             $result->execute($param);

@@ -10,7 +10,7 @@
         <?= "<h1>" . $article["title"] . "<span>  " . $article["date_article"] . "</span> </h1>"?>
         <p> <?= $article["content"]?></p>
     </div>
-    <p><a href="?action=<?= $article['id_article'] ?>">Voir plus </a></p>
+    <p><a href="?article&id=<?= $article['id_article'] ?>">Voir plus </a></p>
 
     <?php endforeach ?>
     <?php 
