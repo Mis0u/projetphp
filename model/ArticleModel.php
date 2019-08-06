@@ -6,7 +6,7 @@ class ArticleModel extends Model{
 
     public function getArticles(){
         $sql="SELECT id_article,content, DATE_FORMAT(date_article, '%d/%m/%Y à %Hh%i') as date_article,title FROM article";
-        $articles= $this->executeRequest($sql);
+        $articles= $this->executeRequest($sql)->fetchAll();
        return $articles;
     }
 
@@ -18,7 +18,7 @@ class ArticleModel extends Model{
 
     public function getLastArticle(){
         $sql="SELECT id_article, content,  DATE_FORMAT(date_article, '%d/%m/%Y à %Hh%i') as date_article,title FROM article ORDER BY date_article DESC LIMIT 1";
-        $lastArticle=$this->executeRequest($sql);
+        $lastArticle=$this->executeRequest($sql)->fetchAll();
         return $lastArticle;
     }
 }

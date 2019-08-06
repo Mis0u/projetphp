@@ -5,12 +5,12 @@
 <?php ob_start()?>
 
 <?php if(isset($articles)) :?>
-    <?php foreach($articles as $article) : ?>
+    <?php foreach($articles as $fixture) : ?>
     <div class="box-content">
-        <?= "<h1>" . $article["title"] . "<span>  " . $article["date_article"] . "</span> </h1>"?>
-        <p> <?= $article["content"]?></p>
+        <?= "<h1>" . $fixture["title"] . "<span>  " . $fixture["date_article"] . "</span> </h1>"?>
+        <p> <?= $fixture["content"]?></p>
     </div>
-    <p><a href="?article&id=<?= $article['id_article'] ?>">Voir plus </a></p>
+    <p><a href="article/<?= $fixture['id_article'] ?>">Voir plus </a></p>
 
     <?php endforeach ?>
     <?php 
