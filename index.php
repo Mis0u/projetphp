@@ -1,13 +1,10 @@
 <?php
+
 require "vendor/autoload.php";
-//var_dump($_GET["url"]);die;
-$router = new Control\Router();
+
+$router = new Control\Router($_GET["url"]);
+$ctrlHome = new Control\ControllerHomepage();
 
 
-$router->getHomepage();
-$router->getError();
-$router->getAbout();
-$router->getBlog();
-$router->getContact();
-
-
+$router->getRoutes("accueil", $ctrlHome->homepage());
+$router->run();
