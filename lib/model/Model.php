@@ -1,7 +1,6 @@
 <?php
 
-namespace Model;
-
+namespace Lib\model;
 
 abstract class Model{
 

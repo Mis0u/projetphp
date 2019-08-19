@@ -11,7 +11,7 @@ body {
 .accueil header .bg {
   height: 100vh;
   max-width: 100%;
-  background-image: url("lib/images/alaska.jpg");
+  background-image: url("asset/images/alaska.jpg");
 }
 
 .accueil nav{
@@ -75,7 +75,7 @@ section {
   flex-grow: 1;
 }
 section .autor-content {
-  background-image: url("lib/images/jean-forteroche.jpg");
+  background-image: url("asset/images/jean-forteroche.jpg");
   background-size: cover;
   background-position: 0 -244px;
   background-repeat: no-repeat;

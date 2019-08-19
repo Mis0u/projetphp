@@ -1,7 +1,7 @@
 <?php
 
 namespace Control;
-use Model\ArticleModel;
+use Lib\model\ArticleModel;
 
 class ControllerHomepage{
 

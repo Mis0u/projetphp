@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/main.css">
     <title><?= $title ?></title>
 </head>
 <body class="<?= $body ?>">
     <header>
         <nav>
-            <div class="logo"><img src="lib/images/logo.png"/></div>
+            <div class="logo"><img src="/asset/images/logo.png"/></div>
             <ul>
                 <li class="hamburger"></li>
-                <li><a href="accueil">Accueil</a></li>
-                <li><a href="about">A propos de l'auteur</a></li>
-                <li><a href="blog">Blog</a></li>
-                <li><a href="contact">Contact</a></li>
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/about">A propos de l'auteur</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </nav> 
         <div class="bg"></div>            
@@ -29,6 +29,6 @@
     <footer>
     <p>2019 - Jean Forteroche</p>
     </footer>
-    <script src="lib/js/main.js"></script>
+    <script src="/asset/js/main.js"></script>
 </body>
 </html>

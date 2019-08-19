@@ -20,10 +20,10 @@ ob_start()?>
 
 <div class = "pagination">
         <?php 
-        echo "Pages :";
-        for ($i = 1; $i <= $nbPages; $i++):
-                echo '<a href="?page=' .$i. '">' .$i. '</a>';
-         endfor ?>
+           echo "Pages :";
+           for ($i = 1; $i <= $nbPages; $i++):
+                   echo '<a href="?page=' .$i. '">' .$i. '</a>';
+            endfor ?>
        
 </div>
 <?php $content = ob_get_clean() ;

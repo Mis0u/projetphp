@@ -2,8 +2,8 @@
 
 namespace Control;
 
-use Model\ArticleModel;
-use Model\CommentsModel;
+use Lib\model\ArticleModel;
+use Lib\model\CommentsModel;
 
 class ControllerArticle {
 

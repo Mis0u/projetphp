@@ -4,7 +4,7 @@
 
         "psr-4":{
             "Control\\":"controller",
-            "Model\\":"model"
+            "Lib\\":"lib"
         }
     }
 }
