@@ -1,0 +1,39 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+    <title>Article</title>
+{% endblock %}
+
+{% block body %}
+    <body class="about article">
+{% endblock %}
+
+{% block content %}
+        <div class = "article">
+                <div class="box-article">
+                <h1> {{ array.title }}<span>{{ array.date_article }}</span></h1>
+                        <p> {{ array.content }} </p>
+                </div>
+        {% for commentsArticle in array %}
+                <div class = "box-comments">
+                        <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
+                        <p> {{ commentsArticle.content }}</p>
+                </div>
+        {% endfor %}
+
+</div>
+
+<div class = "pagination">
+
+           <p>Pages :
+           {% for i in secondArray %}
+               
+           <a href = "?page= {{ i }}">{{ i }} </a>
+           {% endfor %}
+        </p>
+          <!--  for ($i = 1; $i <= $nbPages; $i++):
+                   echo '<a href="?page=' .$i. '">' .$i. '</a>';
+            endfor ?> -->
+       
+</div>
+{% endblock %}

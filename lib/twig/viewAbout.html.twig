@@ -1,7 +1,14 @@
-<?php $title =" L'auteur ";
- $body = "about"?>
+{% extends "template.html.twig" %}
 
-<?php ob_start()?>
+{% block title %}
+    <title>À propos</title>
+{% endblock %}
+
+{% block body %}
+    <body class="about">
+{% endblock %}
+
+{% block content %}
 <div class="autor-content">
     <div class="about">
     <blockquote>
@@ -21,9 +28,7 @@
     Numquam eaque molestias nisi, quis dolorum nobis minima ipsa rerum quasi voluptates odit a voluptate corporis distinctio pariatur beatae aliquid maxime nam aperiam fugit, eligendi sed? Illum quia architecto autem.
     Accusantium dicta voluptatem error suscipit, quaerat repudiandae eum explicabo reprehenderit veniam natus, animi doloribus ipsa harum reiciendis rerum! Sequi illo minima consequuntur in commodi tenetur repellendus fugit. Ad, officia porro?
     </p>
-    <p><a href="/projetphp/index.php/blog">Découvrez les chapitres...</a></p>
+    <p><a href="/blog">Découvrez les chapitres...</a></p>
 </div>
 
-<?php $content = ob_get_clean()?>
-
-<?php require "template.php" ?>
+{% endblock %}

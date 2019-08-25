@@ -1,12 +1,8 @@
 <?php
 
+
 require "vendor/autoload.php";
 
-
-$loader = new Twig_Loader_Filesystem(__DIR__ ,'/templates');
-$twig = new \Twig\Environment($loader, [
-    'cache' => false //'/path/to/compilation_cache',
-]);
 
 $router = new Lib\Router($_SERVER["PATH_INFO"] ?? "/accueil");
 

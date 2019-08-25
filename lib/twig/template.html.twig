@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/main.css">
-    <title><?= $title ?></title>
+    {% block title %} {% endblock %}
 </head>
-<body class="<?= $body ?>">
+{% block body %} {% endblock %}
     <header>
         <nav>
             <div class="logo"><img src="/asset/images/logo.png"/></div>
@@ -23,7 +23,7 @@
     </header>
     <section>
         <article>
-            <?= $content ?>
+            {% block content %} {% endblock %}
         </article>
     </section>
     <footer>

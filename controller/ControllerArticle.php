@@ -2,10 +2,11 @@
 
 namespace Control;
 
+use Lib\twig\ControllerTwig;
 use Lib\model\ArticleModel;
 use Lib\model\CommentsModel;
 
-class ControllerArticle {
+class ControllerArticle extends ControllerTwig{
 
   const COMMENT_PER_PAGE = 5;
 
@@ -15,7 +16,8 @@ class ControllerArticle {
     $comments =  new CommentsModel();  
     $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
     $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
-    require "view/viewArticle.php";
+    $twig = new ControllerTwig();
+    $commentsArticle = $twig->render('viewArticle.html.twig', $displayComments, $nbPages);  
   }
 
   private function getFirstResult($idArticle, $nbPages){    

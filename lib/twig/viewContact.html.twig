@@ -1,9 +1,14 @@
-<?php 
+{% extends "template.html.twig" %}
 
-$title = "Contact" ;
-$body = "about contact"  ;
+{% block title %}
+    <title>Contact</title>
+{% endblock %}
 
-ob_start() ; ?>
+{% block body %}
+    <body class="about contact">
+{% endblock %}
+
+{% block content %}
 <h1>Contactez-moi</h1>
 <form method ="post">
     <div class ="name">
@@ -20,7 +25,4 @@ ob_start() ; ?>
     </div>
 </form>
 
-<?php $content = ob_get_clean();
-
-require "template.php" ;
-?>
+{% endblock %}

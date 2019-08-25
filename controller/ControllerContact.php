@@ -2,9 +2,14 @@
 
 namespace Control;
 
-class ControllerContact {
+use Lib\twig\ControllerTwig;
 
-    public function contact(){
-        require "view/viewContact.php" ;
+
+class ControllerContact extends ControllerTwig {
+
+    public function contact()
+    {
+        $twig = new ControllerTwig();
+        $contact = $twig->render('viewContact.html.twig');    
     }
 }

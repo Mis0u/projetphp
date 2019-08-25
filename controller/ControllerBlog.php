@@ -2,15 +2,19 @@
 
 namespace Control;
 
+use Lib\twig\ControllerTwig;
 use Lib\model\ArticleModel;
 
 
 
-class ControllerBlog{
+class ControllerBlog extends ControllerTwig
+{
 
-    public function blog(){
+    public function blog()
+    {
         $articleModel = new ArticleModel();
         $articles = $articleModel->getArticles();
-        require "view/viewBlog.php";
+        $twig = new ControllerTwig();
+        $blog = $twig->render('viewBlog.html.twig',$articles);
     }
 }
