@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+
+p, a, li, h1, h2, h3, footer, cite{
+  font-family: 'Lato', sans-serif;
+
+}
+
 body {
   padding: 0;
   margin: 0;
-  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  background-color: #FFF;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -24,7 +31,7 @@ body {
     box-shadow: 0px 0px 2px #507096;
 }
 
-.about header nav {
+.global header nav {
   box-shadow: 0px 0px 2px #507096;
   background-image: linear-gradient(-6deg, #FFFEFF 0%, #D7FFFE 100%);
 }
@@ -162,9 +169,58 @@ section .blog-about p:last-child a:hover {
   color: #284052;
 }
 
+/*BLOG*/
+
+.blog section{
+  padding: 0 50px;
+}
+
+.blog section article{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr) );
+  grid-gap: 30px;
+}
+.blog figure{
+  margin:0;
+  position: relative;
+}
+
+.blog figure img{
+  width: 100%;
+  height: 100%;
+}
+
+.blog figure:before{
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background-color: rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.blog div.box-content:hover figure:before{
+  background-color:transparent;
+}
+
+.blog div.box-content{
+  border:1px solid #000;
+}
+
+.blog div.box-content h1,.blog div.box-content .date{
+  text-align: center;
+}
+
+.blog div.box-content .resumeArticle{
+  padding: 20px;
+}
+
+
 /*Article*/
 .article p, .article h1, .article div.pagination {
-  color: #fff;
+  color: #000;
 }
 
 /*FORM*/

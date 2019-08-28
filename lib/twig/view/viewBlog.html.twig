@@ -1,0 +1,31 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+    <title>Blog</title>
+{% endblock %}
+
+{% block body %}
+    <body class="global blog">
+{% endblock %}
+
+{% block pageTitle %}
+        <h1>Blog</h1>
+{% endblock %}
+
+{% block content %}
+    
+        {% if array %}
+            {% for allArticles in array %}
+                <div class="box-content">
+                    <figure><img src="https://loremflickr.com/320/240"></figure>
+                    <h1>{{ allArticles.title }}</h1>
+                    <p class ="date">{{ allArticles.date_article }}</p>
+                    <p class = "resumeArticle"> {{ allArticles.content }}... </p>
+                    <p><a href="blog/chapitre/{{ allArticles.id_article }}">Voir plus</a></p>
+                </div>
+                
+            {% endfor %}
+        {% endif %}
+    
+
+{% endblock %}

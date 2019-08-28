@@ -14,7 +14,6 @@ class ControllerBlog extends ControllerTwig
     {
         $articleModel = new ArticleModel();
         $articles = $articleModel->getArticles();
-        $twig = new ControllerTwig();
-        $blog = $twig->render('viewBlog.html.twig',$articles);
+        $blog = $this->render('viewBlog.html.twig',$articles);
     }
 }

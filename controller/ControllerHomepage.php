@@ -12,7 +12,6 @@ class ControllerHomepage extends ControllerTwig
     {
         $articleModel = new ArticleModel();
         $lastArticle= $articleModel->getLastArticle();
-        $twig = new ControllerTwig();
-        $home = $twig->render('viewHomepage.html.twig',$lastArticle);
+        $home = $this->render('viewHomepage.html.twig',$lastArticle);
     }
 }

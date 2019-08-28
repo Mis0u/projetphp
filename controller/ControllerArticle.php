@@ -16,8 +16,7 @@ class ControllerArticle extends ControllerTwig{
     $comments =  new CommentsModel();  
     $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
     $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
-    $twig = new ControllerTwig();
-    $commentsArticle = $twig->render('viewArticle.html.twig', $displayComments, $nbPages);  
+    $commentsArticle = $this->render('viewArticle.html.twig', $displayComments, $nbPages);  
   }
 
   private function getFirstResult($idArticle, $nbPages){    

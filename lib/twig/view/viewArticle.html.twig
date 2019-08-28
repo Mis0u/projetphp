@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <body class="about article">
+    <body class="global article">
 {% endblock %}
 
 {% block content %}
@@ -26,14 +26,14 @@
 <div class = "pagination">
 
            <p>Pages :
-           {% for i in secondArray %}
-               
+           {% for i in 1..secondArray %}
+             
            <a href = "?page= {{ i }}">{{ i }} </a>
+               
+           
            {% endfor %}
         </p>
-          <!--  for ($i = 1; $i <= $nbPages; $i++):
-                   echo '<a href="?page=' .$i. '">' .$i. '</a>';
-            endfor ?> -->
+
        
 </div>
 {% endblock %}
