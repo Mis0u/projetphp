@@ -2,7 +2,10 @@
 
 p, a, li, h1, h2, h3, footer, cite{
   font-family: 'Lato', sans-serif;
+}
 
+h1{
+  font-size: 2em;
 }
 
 body {
@@ -17,7 +20,6 @@ body {
 /*HEADER*/
 .accueil header .bg {
   height: 100vh;
-  max-width: 100%;
   background-image: url("asset/images/alaska.jpg");
 }
 
@@ -34,6 +36,7 @@ body {
 .global header nav {
   box-shadow: 0px 0px 2px #507096;
   background-image: linear-gradient(-6deg, #FFFEFF 0%, #D7FFFE 100%);
+  
 }
 
 header {
@@ -41,7 +44,9 @@ header {
 }
 header nav {
   position: fixed;
+  background-color: transparent;
   width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   z-index: 99;
@@ -63,12 +68,14 @@ header nav ul li {
 }
 header nav ul li a {
   text-decoration: none;
+  color:#000;
 }
 
 .logo {
   transition: all 100ms linear;
   position: relative;
   top: 0;
+  height: 100px;
 }
 
 nav .logo img {
@@ -77,6 +84,15 @@ nav .logo img {
 }
 
 /*SECTION*/
+
+.accueil section{
+  grid-template-columns: repeat(3,1fr);
+  display: grid;
+}
+.accueil section article{
+  grid-column-start: 2;
+}
+
 section {
   margin-top: 154px;
   flex-grow: 1;
@@ -101,6 +117,7 @@ section blockquote {
   padding: 20px;
   margin-right: 70px;
   box-shadow: 1px 1px 9px #000;
+  border:0;
 }
 section blockquote p {
   padding: 15px;
@@ -180,17 +197,17 @@ section .blog-about p:last-child a:hover {
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr) );
   grid-gap: 30px;
 }
-.blog figure{
+ figure{
   margin:0;
   position: relative;
 }
 
-.blog figure img{
+ figure img{
   width: 100%;
   height: 100%;
 }
 
-.blog figure:before{
+ figure:before{
   position: absolute;
   content: '';
   width: 100%;
@@ -201,20 +218,24 @@ section .blog-about p:last-child a:hover {
   transition: background-color 0.3s ease-in-out;
 }
 
-.blog div.box-content:hover figure:before{
+ div.box-content:hover figure:before{
   background-color:transparent;
 }
 
-.blog div.box-content{
+ div.box-content{
   border:1px solid #000;
 }
 
-.blog div.box-content h1,.blog div.box-content .date{
+ div.box-content h1, div.box-content .date{
   text-align: center;
 }
 
-.blog div.box-content .resumeArticle{
+ div.box-content .resumeArticle{
   padding: 20px;
+}
+
+.see-more{
+  text-align: center;
 }
 
 
@@ -232,7 +253,7 @@ section .blog-about p:last-child a:hover {
   align-items: center;
 }
 .contact form div {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   width: 36%;
 }

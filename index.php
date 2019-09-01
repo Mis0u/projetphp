@@ -1,10 +1,10 @@
 <?php
 
-
 require "vendor/autoload.php";
 
 
-$router = new Lib\Router($_SERVER["PATH_INFO"] ?? "/accueil");
+
+$router = new Lib\router\Router($_SERVER["PATH_INFO"] ?? "/accueil");
 
 $router->getRoutes("accueil", "ControllerHomepage+homepage");
 $router->getRoutes("blog", "ControllerBlog+blog");

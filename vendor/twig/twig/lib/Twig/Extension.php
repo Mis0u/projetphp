@@ -1,42 +1,14 @@
 <?php
 
-/*
- * This file is part of Twig.
- *
- * (c) 2009 Fabien Potencier
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-abstract class Twig_Extension implements Twig_ExtensionInterface
-{
-    public function getTokenParsers()
-    {
-        return array();
-    }
+use Twig\Extension\AbstractExtension;
 
-    public function getNodeVisitors()
-    {
-        return array();
-    }
+class_exists('Twig\Extension\AbstractExtension');
 
-    public function getFilters()
-    {
-        return array();
-    }
+@trigger_error(sprintf('Using the "Twig_Extension" class is deprecated since Twig version 2.7, use "Twig\Extension\AbstractExtension" instead.'), E_USER_DEPRECATED);
 
-    public function getTests()
+if (\false) {
+    /** @deprecated since Twig 2.7, use "Twig\Extension\AbstractExtension" instead */
+    class Twig_Extension extends AbstractExtension
     {
-        return array();
-    }
-
-    public function getFunctions()
-    {
-        return array();
-    }
-
-    public function getOperators()
-    {
-        return array();
     }
 }

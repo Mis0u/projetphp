@@ -1,0 +1,52 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+    <title>Article</title>
+{% endblock %}
+
+{% block body %}
+    <body class="global article">
+{% endblock %}
+
+{% block content %}
+        <div class = "article">
+                <div class="box-article">
+                <h1> {{ thirdArray.title }}<span>{{ thirdArray.date_article }}</span></h1>
+                        <p> {{ thirdArray.content }} </p>
+                </div>
+        {% for commentsArticle in array %}
+                <div class = "box-comments">
+                        <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
+                        <p> {{ commentsArticle.content }}</p>
+                </div>
+        {% endfor %}
+
+</div>
+
+<form method ="post">
+        <div class ="name">
+            <label for="name"> Votre nom : *</label>
+            <input name="name" placeholder="Votre nom" id="name" type="text" class="validate">
+        </div>
+        <div class="message">
+            <label for="message"> Votre message : *</label>
+            <textarea name="message" rows="9" cols="50" id="message" class="materialize-textarea"> </textarea>
+        </div>
+        <div class="button">
+                <button type="submit">Envoyer</button>
+        </div>
+
+<div class = "pagination">
+
+           <p>Pages :
+           {% for i in 1..secondArray %}
+             
+           <a href = "?page= {{ i }}">{{ i }} </a>
+               
+           
+           {% endfor %}
+        </p>
+
+       
+</div>
+{% endblock %}

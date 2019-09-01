@@ -2,11 +2,11 @@
     "autoload":{
 
         "psr-4":{
-            "Control\\":"controller",
-            "Lib\\":"lib"
+            "Lib\\":"lib",
+            "Src\\":"src"
         }
     },
     "require": {
-        "twig/twig": "2.0"
+        "twig/twig": "^2.0"
     }
 }

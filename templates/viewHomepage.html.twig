@@ -1,0 +1,27 @@
+{% extends "template.html.twig" %}
+
+{% block title %}
+    <title>Accueil</title>
+{% endblock %}
+
+{% block body %}
+    <body class="accueil">
+{% endblock %}
+
+{% block content %}
+    <div class="box-content">
+    {% if array %}
+    {% for lastArticle in array %}
+        <figure><img src="https://loremflickr.com/320/240"></figure>
+        <h1> {{lastArticle.title}}</h1>
+        <p class="date"> {{lastArticle.date_article}}</p>
+        <p class = "resumeArticle"> {{resumeArticle(lastArticle.content)}} </p>
+        <p class="see-more"><a class="waves-effect waves-light btn" href="#">Voir plus</a></p>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+   
+
+{% endblock %}
+

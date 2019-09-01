@@ -7,20 +7,22 @@ cache:
         - vendor
         - $HOME/.composer/cache/files
 
-matrix:
-    include:
-        - php: hhvm-stable
-          sudo: required
-          dist: trusty
-        - php: 7.0
-        - php: 7.1
-    allow_failures:
-        - php: hhvm-stable
-    fast_finish: true
-
 before_install:
-    - if [[ ! $TRAVIS_PHP_VERSION = hhvm* ]]; then phpenv config-rm xdebug.ini || echo "xdebug not available"; fi
-    - if [[ $TRAVIS_PHP_VERSION = hhvm* ]]; then echo hhvm.php7.all=1 >> /etc/hhvm/php.ini; fi
+    - phpenv config-rm xdebug.ini || return 0
 
 install:
     - travis_retry composer install
+
+script: ./vendor/bin/simple-phpunit
+
+jobs:
+    fast_finish: true
+    include:
+        - php: 7.0
+        - php: 7.1
+        - php: 7.2
+        - php: 7.3
+        - php: 7.4snapshot
+        - stage: integration tests
+          php: 7.3
+          script: ./drupal_test.sh
