@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\controller;
+namespace Src\Controller;
 
 use Lib\ControllerTwig;
 

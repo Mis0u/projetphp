@@ -1,10 +1,10 @@
 <?php 
 
-namespace Src\controller;
+namespace Src\Controller;
 
 use Lib\ControllerTwig;
-use Src\model\ArticleModel;
-use Src\model\CommentsModel;
+use Src\Model\ArticleModel;
+use Src\Model\CommentsModel;
 
 class ControllerArticle extends ControllerTwig{
 
@@ -16,7 +16,7 @@ class ControllerArticle extends ControllerTwig{
     $comments =  new CommentsModel();  
     $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
     $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
-    $commentsArticle = $this->render('viewArticle.html.twig', $displayComments, $nbPages, $displayArticle);  
+    $commentsArticle = $this->render('viewArticle.html.twig', ["comms" => $displayComments, "nbPages" => $nbPages, "article" => $displayArticle]);  
   }
 
   private function getFirstResult($idArticle, $nbPages){    

@@ -11,10 +11,10 @@
 {% block content %}
         <div class = "article">
                 <div class="box-article">
-                <h1> {{ thirdArray.title }}<span>{{ thirdArray.date_article }}</span></h1>
-                        <p> {{ thirdArray.content }} </p>
+                <h1> {{ article.title }}<span>{{ article.date_article }}</span></h1>
+                        <p> {{ article.content }} </p>
                 </div>
-        {% for commentsArticle in array %}
+        {% for commentsArticle in comms %}
                 <div class = "box-comments">
                         <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
                         <p> {{ commentsArticle.content }}</p>
@@ -24,27 +24,30 @@
 </div>
 
 <form method ="post">
-        <div class ="name">
+        <div class ="name input-field">
             <label for="name"> Votre nom : *</label>
-            <input name="name" placeholder="Votre nom" id="name" type="text" class="validate">
+            <input name="name" id="name" type="text" class="validate">
         </div>
-        <div class="message">
+        <div class="message input-field">
             <label for="message"> Votre message : *</label>
-            <textarea name="message" rows="9" cols="50" id="message" class="materialize-textarea"> </textarea>
+            <textarea name="message" id="message" class="materialize-textarea"></textarea>
         </div>
         <div class="button">
-                <button type="submit">Envoyer</button>
+                <button type="submit"  class="waves-effect waves-light btn">Envoyer
+                        <i class="material-icons right">send</i>
+                </button>
         </div>
 
 <div class = "pagination">
 
            <p>Pages :
-           {% for i in 1..secondArray %}
-             
-           <a href = "?page= {{ i }}">{{ i }} </a>
-               
-           
-           {% endfor %}
+        {% if nbPages == 1 or not commentsArticle %}
+                <span>1</span>
+                {% else %}
+                {% for i in 1..nbPages %}
+                <a href = "?page= {{ i }}">{{ i }} </a>
+                {% endfor %}
+        {% endif %}
         </p>
 
        

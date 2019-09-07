@@ -14,14 +14,14 @@
 
 {% block content %}
     
-        {% if array %}
-            {% for allArticles in array %}
+        {% if allArticles %}
+            {% for articles in allArticles %}
                 <div class="box-content">
-                    <figure><img src="https://loremflickr.com/320/240"></figure>
-                    <h1>{{ allArticles.title }}</h1>
-                    <p class ="date">{{ allArticles.date_article }}</p>
-                    <p class = "resumeArticle"> {{ resumeArticle(allArticles.content) }} </p>
-                    <p class="see-more"><a class="waves-effect waves-light btn" href="blog/chapitre/{{ allArticles.id_article }}">Voir plus</a></p>
+                    <figure class="cover_article"><img src="https://loremflickr.com/320/240"></figure>
+                    <h1>{{ articles.title }}</h1>
+                    <p class ="date">{{ articles.date_article }}</p>
+                    <p class = "resumeArticle"> {{ articles.content | truncate }} </p>
+                    <p class="see-more"><a class="waves-effect waves-light btn" href="blog/chapitre/{{ articles.id_article }}">Voir plus</a></p>
                 </div>
                 
             {% endfor %}

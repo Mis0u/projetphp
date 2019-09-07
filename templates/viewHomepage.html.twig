@@ -9,19 +9,32 @@
 {% endblock %}
 
 {% block content %}
+    <div class="presentation">
+        <figure class="round_picture">
+            <img src="/../asset/images/round_JF.jpg">
+            <figcaption>
+                <h1>Bienvenue !</h1>
+                <p>Je suis ravie de vous accueillir dans mon univers d’écrivain, fait <strong>d’introspection</strong>, de <strong>poésie</strong>, de <strong>légèreté</strong> et <strong>d’HUMOUR</strong>.</p>
+                <p class="button"><a href="/about" class="waves-effect waves-light btn">À propos</a></p>
+            </figcaption>
+        </figure>
+    </div>
+    {% endblock %}
+
+    {% block Morecontent %}
     <div class="box-content">
-    {% if array %}
-    {% for lastArticle in array %}
-        <figure><img src="https://loremflickr.com/320/240"></figure>
+    {% if lastArticle %}
+    {% for lastArticle in lastArticle %}
+        <figure class="cover_article"><img src="https://loremflickr.com/320/240"></figure>
         <h1> {{lastArticle.title}}</h1>
         <p class="date"> {{lastArticle.date_article}}</p>
-        <p class = "resumeArticle"> {{resumeArticle(lastArticle.content)}} </p>
-        <p class="see-more"><a class="waves-effect waves-light btn" href="#">Voir plus</a></p>
+        <p class = "resumeArticle"> {{ lastArticle.content | truncate }} </p>
+        <p class="see-more"><a class="waves-effect waves-light btn" href="blog/chapitre/{{ lastArticle.id_article}}">Voir plus</a></p>
     </div>
 
     {% endfor %}
     {% endif %}
-   
+    {% endblock %}
 
-{% endblock %}
+
 

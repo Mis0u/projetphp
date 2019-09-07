@@ -1,9 +1,9 @@
 <?php
 
-namespace Src\controller;
+namespace Src\Controller;
 
 use Lib\ControllerTwig;
-use Src\model\ArticleModel;
+use Src\Model\ArticleModel;
 
 
 
@@ -14,6 +14,6 @@ class ControllerBlog extends ControllerTwig
     {
         $articleModel = new ArticleModel();
         $articles = $articleModel->getArticles();
-        $blog = $this->render('viewBlog.html.twig',$articles);
+        $blog = $this->render('viewBlog.html.twig',["allArticles" => $articles]);
     }
 }

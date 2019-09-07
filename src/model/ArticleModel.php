@@ -1,6 +1,6 @@
 <?php 
 
-namespace Src\model;
+namespace Src\Model;
 
 class ArticleModel extends Model{
 

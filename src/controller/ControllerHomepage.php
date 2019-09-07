@@ -1,8 +1,8 @@
 <?php
 
-namespace Src\controller;
+namespace Src\Controller;
 
-use Src\model\ArticleModel;
+use Src\Model\ArticleModel;
 use Lib\ControllerTwig;
 
 class ControllerHomepage extends ControllerTwig 
@@ -12,6 +12,6 @@ class ControllerHomepage extends ControllerTwig
     {
         $articleModel = new ArticleModel();
         $lastArticle= $articleModel->getLastArticle();
-        $home = $this->render('viewHomepage.html.twig',$lastArticle);
+        $home = $this->render('viewHomepage.html.twig',["lastArticle" => $lastArticle]);
     }
 }
