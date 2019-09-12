@@ -6,24 +6,22 @@ class Router {
 
     private $url ;
     private $routes = [];
+    private $request;
 
-    public function __construct($url){
+    public function __construct($request){
       
-        $this->url = $url;
+        $this->request = $request;
         
     }
 
     public function getRoutes($path, $callable){
         $route = new Path($path, $callable);
-        $this->routes['GET'][] = $route;
+        $this->routes[] = $route;
     }
 
     public function run(){
-        if(!isset($this->routes[$_SERVER['REQUEST_METHOD']])){
-            throw new \Exception("Pas de routes");
-        } 
-        foreach($this->routes[$_SERVER['REQUEST_METHOD']] as $route):
-            if($route->match($this->url)){
+        foreach($this->routes as $route):
+            if($route->match($this->request->getUri())){
                return $route->call();
             }
         endforeach;    

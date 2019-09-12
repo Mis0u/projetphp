@@ -5,6 +5,7 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\CommentsModel;
+use Src\Model\Post;
 
 class ControllerArticle extends ControllerTwig{
 
@@ -14,6 +15,7 @@ class ControllerArticle extends ControllerTwig{
     $article = new ArticleModel();
     $displayArticle = $article->getArticle($idArticle);
     $comments =  new CommentsModel();  
+    $postComm = $this->postComm();
     $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
     $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
     $commentsArticle = $this->render('viewArticle.html.twig', ["comms" => $displayComments, "nbPages" => $nbPages, "article" => $displayArticle]);  
@@ -30,5 +32,14 @@ class ControllerArticle extends ControllerTwig{
     } 
      
     return 1;
+  }
+
+  private function postComm(){
+      if (isset($_POST['name']) && isset($_POST["message"])){
+        $insertComm = new Post();
+      }else{
+        echo "Veuillez rentrer votre comm";
+      }
+        
   }
 }

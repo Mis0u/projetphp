@@ -2,11 +2,13 @@
 
 require "vendor/autoload.php";
 
+use Lib\Http\Request;
 
 
-$router = new Lib\router\Router($_SERVER["PATH_INFO"] ?? "/accueil");
+$request = new Request($_GET, $_POST, $_SERVER);
+$router = new Lib\router\Router($request);
 
-$router->getRoutes("accueil", "ControllerHomepage+homepage");
+$router->getRoutes("/", "ControllerHomepage+homepage");
 $router->getRoutes("blog", "ControllerBlog+blog");
 $router->getRoutes("blog/chapitre/:id", "ControllerArticle+getcomments");
 $router->getRoutes("about", "ControllerAbout+about");

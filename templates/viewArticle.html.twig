@@ -14,16 +14,16 @@
                 <h1> {{ article.title }}<span>{{ article.date_article }}</span></h1>
                         <p> {{ article.content }} </p>
                 </div>
-        {% for commentsArticle in comms %}
+                {% for commentsArticle in comms %}
                 <div class = "box-comments">
                         <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
                         <p> {{ commentsArticle.content }}</p>
                 </div>
-        {% endfor %}
+                {% endfor %}
 
-</div>
+        </div>
 
-<form method ="post">
+<form method ="post" action = "">
         <div class ="name input-field">
             <label for="name"> Votre nom : *</label>
             <input name="name" id="name" type="text" class="validate">
@@ -37,17 +37,18 @@
                         <i class="material-icons right">send</i>
                 </button>
         </div>
-
+</form>
 <div class = "pagination">
 
            <p>Pages :
-        {% if nbPages == 1 or not commentsArticle %}
+
+         {% if nbPages == 1 or not comms %}
                 <span>1</span>
                 {% else %}
-                {% for i in 1..nbPages %}
-                <a href = "?page= {{ i }}">{{ i }} </a>
+                {% for nbPages in 1..nbPages %}
+                <a href = "?page= {{ nbPages }}">{{ nbPages }} </a>
                 {% endfor %}
-        {% endif %}
+        {% endif %} 
         </p>
 
        
