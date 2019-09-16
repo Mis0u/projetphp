@@ -5,7 +5,7 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\CommentsModel;
-use Src\Model\Post;
+use Lib\FormValidator;
 
 class ControllerArticle extends ControllerTwig{
 
@@ -15,9 +15,9 @@ class ControllerArticle extends ControllerTwig{
     $article = new ArticleModel();
     $displayArticle = $article->getArticle($idArticle);
     $comments =  new CommentsModel();  
-    $postComm = $this->postComm();
     $nbPages = ceil($comments->countComments($idArticle)/self::COMMENT_PER_PAGE);    
     $displayComments = $comments->getComments($idArticle, $this->getFirstResult($idArticle, $nbPages), self::COMMENT_PER_PAGE);
+    $displayNewComments = $this->postComm($idArticle);
     $commentsArticle = $this->render('viewArticle.html.twig', ["comms" => $displayComments, "nbPages" => $nbPages, "article" => $displayArticle]);  
   }
 
@@ -34,12 +34,28 @@ class ControllerArticle extends ControllerTwig{
     return 1;
   }
 
-  private function postComm(){
-      if (isset($_POST['name']) && isset($_POST["message"])){
-        $insertComm = new Post();
-      }else{
-        echo "Veuillez rentrer votre comm";
+  private function postComm($idArticle){
+      $post = $this->request->getPost();
+      if ($this->formValidator->isNotEmpty($post)&& $this->formValidator->isNotEmpty($post["name"]) && $this->formValidator->isNotEmpty($post["message"]) ){
+        $comments = new CommentsModel();
+        $comments->postComm($idArticle,$post["name"],$post["message"]);
+            header("Location: /blog/chapitre/$idArticle");
       }
-        
+        /* if (!empty($_POST)){
+          $postComm = new InsertComm();
+          $formValidator = new FormValidator();
+          $postName = $_POST["name"];
+          $postMsg = $_POST["message"];
+          if ((!empty($postName)) && ($formValidator->name($postName) == true) && (!empty($postMsg))){
+            $comms = $postComm->postComm($idArticle,$postName,$postMsg);
+            header("Location: /blog/chapitre/$idArticle");
+            
+          } else{
+              $errors =$_POST["name"] ="Nom mal écris";
+          } */
+      
+    
   }
+        
+  
 }

@@ -8,17 +8,24 @@ use Lib\FormValidator;
 
 class ControllerContact extends ControllerTwig {
 
+
+
+
     private $recipient = "blog.jforteroche@gmail.com";
     private $subject = "Message en provenance du blog";
 
+    
+
     public function contact()
-    {       
+    {   
         $contact = $this->render('viewContact.html.twig');
         $send = $this->send();
     }
 
     public function send(){
-        if (!empty($_POST)){
+
+  
+       /*  if (!empty($_POST)){
             $formValidator = new FormValidator();
             $postMail = htmlspecialchars($_POST["mail"]);
             $postName = htmlspecialchars($_POST["name"]);
@@ -33,7 +40,7 @@ class ControllerContact extends ControllerTwig {
             } else{
                 echo 'Veuillez remplir correctement tout les champs';
             }
-        }
+        } */
         
     }
 

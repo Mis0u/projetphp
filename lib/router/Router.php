@@ -22,7 +22,7 @@ class Router {
     public function run(){
         foreach($this->routes as $route):
             if($route->match($this->request->getUri())){
-               return $route->call();
+               return $route->call($this->request);
             }
         endforeach;    
         throw new \Exception("URL non valide");

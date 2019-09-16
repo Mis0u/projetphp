@@ -1,6 +1,7 @@
 <?php
 
 namespace Lib;
+use Lib\FormValidator;
 
 abstract class ControllerTwig
 {
@@ -8,11 +9,16 @@ abstract class ControllerTwig
     private $loader;
     private $twig;
     private $function;
+    protected $request;
+    protected $formValidator;
 
-    public function __construct()
+    public function __construct($request)
     {
         $this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ .'/../templates');
         $this->twig = new \Twig\Environment($this->loader);
+        $this->request = $request;
+        $this->formValidator = new FormValidator;
+
        
         $this->filter = new \Twig\TwigFilter('truncate', function (string $content, int $limit = 300){
             if (strlen($content) <= $limit){

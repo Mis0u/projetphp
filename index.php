@@ -13,5 +13,6 @@ $router->getRoutes("blog", "ControllerBlog+blog");
 $router->getRoutes("blog/chapitre/:id", "ControllerArticle+getcomments");
 $router->getRoutes("about", "ControllerAbout+about");
 $router->getRoutes("contact", "ControllerContact+contact");
+$router->getRoutes("admin", "ControllerAdminLog+getAdminLog");
 $router->run();
 

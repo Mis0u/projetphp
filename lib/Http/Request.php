@@ -3,7 +3,7 @@
 namespace Lib\Http;
 
 class Request{
-
+  
     private $get;
     private $post;
     private $server;

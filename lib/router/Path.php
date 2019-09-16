@@ -26,12 +26,12 @@ class Path{
         return true;
     }
 
-    public function call(){
+    public function call($request){
        if(is_string($this->callable)){
         $params = explode("+", $this->callable);
 
         $controller = "Src\\controller\\".$params[0];
-        $controller = new $controller();
+        $controller = new $controller($request);
         return call_user_func_array([$controller, $params[1]], $this->matches);
        } 
     }

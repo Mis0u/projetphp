@@ -16,4 +16,10 @@ class CommentsModel extends Model{
         return $totalComm['nbcomm'];
     }
 
+    public function postComm($id_article,$author,$content){
+        $sql = "INSERT into commentaires (id_article,author,content) VALUES(?,?,?)";
+        $newComm = $this->executeRequest($sql, array($id_article,$author,$content));
+        return $newComm ;
+    }
+
 }
