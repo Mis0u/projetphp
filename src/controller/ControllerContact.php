@@ -23,25 +23,14 @@ class ControllerContact extends ControllerTwig {
     }
 
     public function send(){
-
-  
-       /*  if (!empty($_POST)){
-            $formValidator = new FormValidator();
-            $postMail = htmlspecialchars($_POST["mail"]);
-            $postName = htmlspecialchars($_POST["name"]);
-            $postMsg = htmlspecialchars($_POST["message"]);
-            if ((!empty($postMail)) && ($formValidator->mail($postMail) == true) && (!empty($postName)) && ($formValidator->name($postName) == true) && (!empty($postMsg))){
-
-             $content = 'Nom :'.$postName. '\n';
-             $content = 'Email :' .$postMail. '\n';
-             $content = 'Message :' .$postMsg. '\n';
+        $post = $this->request->getPost();
+        if (($this->formValidator->isNotEmpty($post)) && ($this->formValidator->isNotEmpty($post["name"])) && ($this->formValidator->isNotEmpty($post["mail"])) && ($this->formValidator->mail($post["mail"])) && ($this->formValidator->isNotEmpty($post["message"]))){
+            $content = 'Nom :'.$post["name"]. '\n';
+            $content = 'Email :' .$post["mail"]. '\n';
+            $content = 'Message :' .$post["message"]. '\n';
 
              mail($this->recipient,$this->subject, $content);
-            } else{
-                echo 'Veuillez remplir correctement tout les champs';
-            }
-        } */
-        
+        }
     }
 
 }

@@ -1,0 +1,54 @@
+{% extends "templateAdmin.html.twig" %}
+
+{% block title %}
+    <title>Admin</title>
+{% endblock %}
+
+{% block body %}
+    <body class="admin">
+{% endblock %}
+{% block content %} 
+    <div class="sticky-container">
+        <div class="container">
+            <div class="hamb">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul>
+                <form method="POST">
+                    <button type="submit" name="disconnect" value="logout">Se déconnecter</button>
+                </form>
+                <a href="#">Créer un article</a>
+            </ul>
+        </div>
+    </div>
+
+    <h1>Bienvenue {{ sessionUser }}</h1>
+    <div class="content">
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for articles in allArticles %}
+
+                <tr>
+                    <td><a href="chapitre/{{ articles.id_article }}">{{ articles.title }}</a></td>
+                    <td><a class="update" href="update/{{ articles.id_article }}"><i class="material-icons">restore_page</i></a></td>
+                    <td>
+                        <form method="POST">
+                            <button class="delete" type="submit" name="delete"><i class="material-icons">delete</i></button>
+                        </form>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

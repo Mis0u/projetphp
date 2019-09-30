@@ -1,0 +1,25 @@
+{% extends "templateAdmin.html.twig" %}
+
+{% block title %}<title>Modifier</title>{% endblock %}
+
+{% block body %}<body class ="update">{% endblock %}
+
+{% block content %}
+
+<form method ="POST" action = "">
+        <div class ="title input-field">
+            <label for="title"> Titre </label>
+            <input name="title" id="title" type="text" class="validate">
+        </div>
+        <div class="message input-field">
+            <label for="message"> Votre message : *</label>
+            <textarea name="message" id="message" class="materialize-textarea"></textarea>
+        </div>
+        <div class="button">
+                <button type="submit"  class="waves-effect waves-light btn">Envoyer
+                        <i class="material-icons right">send</i>
+                </button>
+        </div>
+</form>
+
+{% endblock %}

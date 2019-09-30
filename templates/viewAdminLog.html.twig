@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/main.css">
-<body class="admin">
+    <title>Admin</title>
 </head>
-
+<body class="adminLog">
         <article>
-            <form>
-                <div class ="name input-field">
+            <form method = "post" action = "">
+                <div class ="username input-field">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="name" type="text" class="validate" name="name">
-                    <label for="name">User</label>
+                    <input id="username" type="text" class="validate" name="username">
+                    <label for="username">User</label>
             </div>
             <div class ="password input-field">
                     <i class="material-icons prefix">security</i>
-                    <input id="mail" type="password" class="validate" name="mail">
-                    <label for="mail">Password : *</label>
+                    <input id="password" type="password" class="validate" name="password">
+                    <label for="password">Password : *</label>
             </div>
+
+            <div class="button">
+                <button type="submit"  class="waves-effect waves-light btn">Envoyer
+                        <i class="material-icons right">send</i>
+                </button>
+        </div>
             </form>
         </article>
     

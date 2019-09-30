@@ -21,6 +21,21 @@ function bgFill(){
     }
 }
 
+function adminSideBar(){
+    const hamb= document.querySelector(".hamb")
+    const lines= document.querySelectorAll(".line")
+    const ul = document.querySelector("ul")
+    const content = document.querySelector(".container")
+    hamb.addEventListener("click", () => {
+    lines.forEach(line =>{
+        line.classList.toggle("actif")
+    })
+    ul.classList.toggle("actif")
+    content.classList.toggle("actif")
+    })
+}
 
-window.addEventListener("scroll",headerScroll)
-window.addEventListener("scroll",bgFill)
+
+window.addEventListener("scroll",headerScroll);
+window.addEventListener("scroll",bgFill);
+adminSideBar();

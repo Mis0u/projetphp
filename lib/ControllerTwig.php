@@ -8,7 +8,8 @@ abstract class ControllerTwig
 
     private $loader;
     private $twig;
-    private $function;
+    private $truncate;
+    private $goToLine;
     protected $request;
     protected $formValidator;
 
@@ -17,17 +18,18 @@ abstract class ControllerTwig
         $this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ .'/../templates');
         $this->twig = new \Twig\Environment($this->loader);
         $this->request = $request;
-        $this->formValidator = new FormValidator;
+        $this->formValidator = new FormValidator();
 
        
-        $this->filter = new \Twig\TwigFilter('truncate', function (string $content, int $limit = 300){
+        $this->truncate = new \Twig\TwigFilter('truncate', function (string $content, int $limit = 300){
             if (strlen($content) <= $limit){
                 return $content;
             }
             $lastSpace = strpos($content, ' ', $limit);
              return substr($content, 0 ,$lastSpace). ' ...';
         });
-        $this->twig->addFilter($this->filter);
+
+        $this->twig->addFilter($this->truncate);
         
     }
     

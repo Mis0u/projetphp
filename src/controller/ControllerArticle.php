@@ -5,7 +5,6 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\CommentsModel;
-use Lib\FormValidator;
 
 class ControllerArticle extends ControllerTwig{
 
@@ -41,19 +40,6 @@ class ControllerArticle extends ControllerTwig{
         $comments->postComm($idArticle,$post["name"],$post["message"]);
             header("Location: /blog/chapitre/$idArticle");
       }
-        /* if (!empty($_POST)){
-          $postComm = new InsertComm();
-          $formValidator = new FormValidator();
-          $postName = $_POST["name"];
-          $postMsg = $_POST["message"];
-          if ((!empty($postName)) && ($formValidator->name($postName) == true) && (!empty($postMsg))){
-            $comms = $postComm->postComm($idArticle,$postName,$postMsg);
-            header("Location: /blog/chapitre/$idArticle");
-            
-          } else{
-              $errors =$_POST["name"] ="Nom mal écris";
-          } */
-      
     
   }
         
