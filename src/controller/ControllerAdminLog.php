@@ -7,15 +7,12 @@ use Src\Model\Admin;
 class ControllerAdminLog extends ControllerTwig{
 
     public function getAdminLog(){
-        $render = $this->render('viewAdminLog.html.twig');
-        $accesAdmin = $this->accesAdmin();
-    }
-
-    private function accesAdmin(){
-        $post = $this->request->getPost();
-        $admin = new Admin();
-        $user = $admin->user();
-        $data = $user->fetch();
+        $errors = [];
+        if ($this->request->getMethod() == "POST"){
+            $post = $this->request->getPost();
+            $admin = new Admin();
+            $user = $admin->user();
+            $data = $user->fetch();
             if ($this->formValidator->isNotEmpty($post) 
                 && $this->formValidator->isNotEmpty($post["username"])
                 && $post["username"] === $data["username"]
@@ -25,9 +22,17 @@ class ControllerAdminLog extends ControllerTwig{
                     $_SESSION['username'] = $data["username"];
                     header("Location:/admin/auth");
             }
-
-                echo"<h1> Les identifiants sont incorrects </h1>";
-
-
+            if (!$this->formValidator->isNotEmpty($post["username"])){
+                $errors["username"] = "Ce champ ne peut pas être vide";
+            }
+            if (!$this->formValidator->isNotEmpty($post["password"])){
+                $errors["password"] = "Ce champ ne peut pas être vide";
+            }
+            if(!password_verify($post["password"],$data["userpass"])){
+                $errors["password"] = "Ce mot de pass n'est pas valide";
+            }
+        }
+        $this->render('viewAdminLog.html.twig',["errors" => $errors]);
     }
+
 }

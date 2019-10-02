@@ -1,0 +1,26 @@
+{% extends "templateAdmin.html.twig" %}
+
+{% block title %}<title>Création d'un nouvel article</title>{% endblock %}
+
+{% block body %}<body class ="create">{% endblock %}
+
+{% block content %}
+
+<h1>Création d'un nouvel article</h1>
+
+<form method="POST" action="">
+<div class="title name input-field">
+        <label for="title">Titre</label>
+        <input type="text" name="title" id="title" class="validate">
+</div>
+<div class="wysiwyg" name="content" id="content"></div>
+
+<div class="button">
+        <button type="submit"  class="waves-effect waves-light btn">Mettre à jour
+                <i class="material-icons right">send</i>
+        </button>
+</div>
+
+</form>
+
+{% endblock %}

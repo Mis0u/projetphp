@@ -9,7 +9,6 @@ abstract class ControllerTwig
     private $loader;
     private $twig;
     private $truncate;
-    private $goToLine;
     protected $request;
     protected $formValidator;
 

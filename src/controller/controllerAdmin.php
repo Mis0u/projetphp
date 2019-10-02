@@ -4,46 +4,34 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\Admin;
+use Src\Controller\ControllerDisconnect;
 
 
 class ControllerAdmin extends ControllerTwig{
 
         public function access(){
             $admin = $this->admin();
-            $disconnect = $this->disconnect();
         }
 
-        public function pageUpdate(){
-            $pageUpdate = $this->render('viewAdminUpdate.html.twig');
+        public function delete($idArticle){
+            $admin = new Admin();
+            $delete = $admin->delete($idArticle);
+            header("Location: /admin/auth");
+        }
+
+        public function disconnect(){
+            $control = new ControllerDisconnect();
+            $disconnect = $control->disconnect(); 
         }
 
         private function admin(){
-            if ($_SESSION["access"] != "confirmed" || empty($_SESSION["access"])){
-                header("Location: /blog");
+            if ($_SESSION["access"] != "confirmed"){
+                echo "Vous n'avez pas accès à cette page";
             } else{
                 $articleModel = new ArticleModel();
                 $articles = $articleModel->getArticles();
                 $blog = $this->render('viewAdmin.html.twig',["allArticles" => $articles, "sessionUser" => $_SESSION["username"]]);
             }
         }
-
-        private function disconnect(){
-            $post = $this->request->getPost();
-            if ($this->formValidator->isNotEmpty($post["disconnect"])){
-                session_unset();
-                session_destroy();
-            }
-        }
-
-        public function delete($idArticle){
-            $post = $this->request->getPost();
-            if ($this->formValidator->isNotEmpty($post["delete"])){
-                $admin = new Admin();
-                $delete = $admin->delete($idArticle);
-            }
-        }
-
-        
-
        
 }

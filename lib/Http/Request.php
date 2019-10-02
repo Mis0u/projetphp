@@ -21,6 +21,10 @@ class Request{
         return $this->post;
     }
 
+    public function getMethod(){
+        return $this->server["REQUEST_METHOD"];
+    }
+
     public function getServer(){
         return $this->server;
     }

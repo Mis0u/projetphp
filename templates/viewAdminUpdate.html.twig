@@ -6,20 +6,21 @@
 
 {% block content %}
 
-<form method ="POST" action = "">
-        <div class ="title input-field">
-            <label for="title"> Titre </label>
-            <input name="title" id="title" type="text" class="validate">
-        </div>
-        <div class="message input-field">
-            <label for="message"> Votre message : *</label>
-            <textarea name="message" id="message" class="materialize-textarea"></textarea>
-        </div>
-        <div class="button">
-                <button type="submit"  class="waves-effect waves-light btn">Envoyer
-                        <i class="material-icons right">send</i>
-                </button>
-        </div>
+<h1>Modification de l'article : {{article.title}}</h1>
+
+<form method="POST" action="">
+<div class="title name input-field">
+        <label for="title">Titre</label>
+        <input type="text" name="title" id="title" class="validate">
+</div>
+<div class="wysiwyg" name="content" id="content"></div>
+
+<div class="button">
+        <button type="submit"  class="waves-effect waves-light btn">Mettre à jour
+                <i class="material-icons right">send</i>
+        </button>
+</div>
+
 </form>
 
 {% endblock %}

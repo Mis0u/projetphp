@@ -17,5 +17,17 @@ class Admin extends Model{
         return $deleteArticle;
     }
 
+    public function update($idArticle, $title,$content){
+        $sql = "UPDATE article SET title = ?, content = ? WHERE id_article = ?";
+        $updateArticle= $this->executeRequest($sql, array($title,$content,$idArticle));
+        return $updateArticle;
+    }
+
+    public function create($title,$content){
+        $sql = "INSERT INTO article (title,content) VALUES(?,?)";
+        $createArticle= $this->executeRequest($sql, array($title,$content));
+        return $createArticle;
+    }
+
     
 }

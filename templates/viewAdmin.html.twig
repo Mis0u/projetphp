@@ -16,10 +16,8 @@
                 <div class="line"></div>
             </div>
             <ul>
-                <form method="POST">
-                    <button type="submit" name="disconnect" value="logout">Se déconnecter</button>
-                </form>
-                <a href="#">Créer un article</a>
+                <a href="disconnect" name="disconnect" value="logout">Se déconnecter</a>
+                <a href="create">Créer un article</a>
             </ul>
         </div>
     </div>
@@ -41,9 +39,7 @@
                     <td><a href="chapitre/{{ articles.id_article }}">{{ articles.title }}</a></td>
                     <td><a class="update" href="update/{{ articles.id_article }}"><i class="material-icons">restore_page</i></a></td>
                     <td>
-                        <form method="POST">
-                            <button class="delete" type="submit" name="delete"><i class="material-icons">delete</i></button>
-                        </form>
+                            <a href="delete/{{ articles.id_article }}" class="delete" name="delete"><i class="material-icons">delete</i></a>
                     </td>
                 </tr>
 
