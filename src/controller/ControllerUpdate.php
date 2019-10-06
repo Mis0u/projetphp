@@ -4,6 +4,7 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\Admin;
 use Src\Model\ArticleModel;
+use Lib\AddImage;
 
 class ControllerUpdate extends ControllerTwig{
     
@@ -14,14 +15,17 @@ class ControllerUpdate extends ControllerTwig{
         $pageUpdate = $this->render('viewAdminUpdate.html.twig',["article"=>$getArticle]);
     }
 
-    public function update($id_article){
+    private function update($id_article){
         if ($this->request->getMethod() == "POST"){
             $post = $this->request->getPost();
-            if ($this->formValidator->isNotEmpty($post)&& $this->formValidator->isNotEmpty($post["title"])&& $this->formValidator->isNotEmpty($post["content"])){
+            if ($this->formValidator->isNotEmpty($post)&& $this->formValidator->isNotEmpty($post["title"])&& $this->formValidator->isNotEmpty($post["content"])&& $this->formValidator->isNotEmpty($_FILES["image_article"])){
                 $admin = new Admin();
-                $update = $admin->update($id_article,$post["title"],$post["content"]);
+                $img = new AddImage();
+                $updateImg = $img->addImageArticle("image_article");
+                $update = $admin->update($id_article,$post["title"],$post["content"],"asset/upload/" . basename($_FILES["image_article"]['name']));
                 header("Location: /admin/auth");
             }
+            
         }
     }
 

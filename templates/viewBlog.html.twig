@@ -17,7 +17,7 @@
         {% if allArticles %}
             {% for articles in allArticles %}
                 <div class="box-content">
-                    <figure class="cover_article"><img src="https://loremflickr.com/320/240"></figure>
+                    <figure class="cover_article"><img src="{{ articles.image_article }}"></figure>
                     <h1>{{ articles.title }}</h1>
                     <p class ="date">{{ articles.date_article }}</p>
                     <p class = "resumeArticle"> {{ articles.content | truncate }} </p>

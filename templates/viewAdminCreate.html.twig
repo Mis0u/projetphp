@@ -6,17 +6,39 @@
 
 {% block content %}
 
+<p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
+
 <h1>Création d'un nouvel article</h1>
 
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
 <div class="title name input-field">
         <label for="title">Titre</label>
         <input type="text" name="title" id="title" class="validate">
+        {% if errors.title is defined %}
+        <span class="error">{{errors.title}}</span> 
+        {% endif %}
 </div>
+
 <div class="wysiwyg" name="content" id="content"></div>
+{% if errors.content is defined %}
+<span class="error">{{errors.content}}</span> 
+{% endif %}
+
+<div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="image_article">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+</div>
+{% if errors.image_article is defined %}
+<span class="error">{{errors.image_article}}</span> 
+{% endif %}
 
 <div class="button">
-        <button type="submit"  class="waves-effect waves-light btn">Mettre à jour
+        <button type="submit"  class="waves-effect waves-light btn">Créer
                 <i class="material-icons right">send</i>
         </button>
 </div>

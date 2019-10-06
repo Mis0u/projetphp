@@ -1,14 +1,22 @@
-{% extends "template.html.twig" %}
+
+{% extends session  ? "templateAdmin.html.twig" : "template.html.twig"   %}
 
 {% block title %}
     <title>Article</title>
 {% endblock %}
 
 {% block body %}
-    <body class="global article">
+        {% if session  %}
+                <body class="admin admin_article">
+        {% else %}
+        <body class="global article">
+        {% endif %}
 {% endblock %}
 
 {% block content %}
+{% if session  %}
+<p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
+{% endif %}
         <div class = "article">
                 <div class="box-article">
                 <h1> {{ article.title }}<span> {{ article.date_article }}</span></h1>
@@ -19,6 +27,9 @@
                         <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
                         <p> {{ commentsArticle.content }}</p>
                 </div>
+                {% if session  %}
+                <p><a href="/admin/delete/comm/{{ commentsArticle.id_comm }}" class="delete" name="delete"><i class="material-icons">delete</i></a></p>
+                {% endif %}
                 {% endfor %}
 
         </div>

@@ -21,6 +21,7 @@ $router->getRoutes("admin/disconnect", "ControllerAdmin+disconnect");
 $router->getRoutes("admin/chapitre/:id", "ControllerArticle+getcomments");
 $router->getRoutes("admin/update/:id", "ControllerUpdate+pageUpdate");
 $router->getRoutes("admin/delete/:id", "ControllerAdmin+delete");
+$router->getRoutes("admin/delete/comm/:id", "ControllerAdmin+deleteComm");
 $router->getRoutes("admin/create", "ControllerCreate+create");
 $router->run();
 

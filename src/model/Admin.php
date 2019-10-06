@@ -17,17 +17,21 @@ class Admin extends Model{
         return $deleteArticle;
     }
 
-    public function update($idArticle, $title,$content){
-        $sql = "UPDATE article SET title = ?, content = ? WHERE id_article = ?";
-        $updateArticle= $this->executeRequest($sql, array($title,$content,$idArticle));
+    public function deleteComm($idComm){
+        $sql = "DELETE FROM commentaires WHERE id_comm = ?";
+        $deleteComm= $this->executeRequest($sql, array($idComm));
+        return $deleteComm;
+    }
+
+    public function update($idArticle, $title,$content,$img){
+        $sql = "UPDATE article SET title = ?, content = ?, image_article = ? WHERE id_article = ?";
+        $updateArticle= $this->executeRequest($sql, array($title,$content,$img,$idArticle));
         return $updateArticle;
     }
 
-    public function create($title,$content){
-        $sql = "INSERT INTO article (title,content) VALUES(?,?)";
-        $createArticle= $this->executeRequest($sql, array($title,$content));
+    public function create($title,$content,$img){
+        $sql = "INSERT INTO article (title,content,image_article) VALUES(?,?,?)";
+        $createArticle= $this->executeRequest($sql, array($title,$content,$img));
         return $createArticle;
     }
-
-    
 }

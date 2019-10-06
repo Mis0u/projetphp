@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 
-.admin .content .delete i{
+.admin .delete i{
   color:#dc3545;
 }
 
@@ -102,4 +102,15 @@
   .admin .sticky-container a{
     padding:10px 15px;
     color:#FFF;
+}
+
+/*DETAILS*/
+
+p.back{
+  display:flex;
+}
+
+p.back i{
+  transform: scaleY(-1);
+  font-size: 3rem;
 }

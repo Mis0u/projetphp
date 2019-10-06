@@ -19,7 +19,6 @@ abstract class ControllerTwig
         $this->request = $request;
         $this->formValidator = new FormValidator();
 
-       
         $this->truncate = new \Twig\TwigFilter('truncate', function (string $content, int $limit = 300){
             if (strlen($content) <= $limit){
                 return $content;
@@ -29,6 +28,7 @@ abstract class ControllerTwig
         });
 
         $this->twig->addFilter($this->truncate);
+
         
     }
     

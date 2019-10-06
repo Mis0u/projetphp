@@ -19,11 +19,18 @@ class ControllerAdmin extends ControllerTwig{
             header("Location: /admin/auth");
         }
 
+        public function deleteComm($idComm){
+            $admin = new Admin();
+            $deleteComm = $admin->deleteComm($idComm);
+            header("Location: /admin/auth");
+        }
+
         public function disconnect(){
             $control = new ControllerDisconnect();
             $disconnect = $control->disconnect(); 
         }
 
+       
         private function admin(){
             if ($_SESSION["access"] != "confirmed"){
                 echo "Vous n'avez pas accès à cette page";

@@ -5,15 +5,26 @@
 {% block body %}<body class ="update">{% endblock %}
 
 {% block content %}
+<p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
 
 <h1>Modification de l'article : {{article.title}}</h1>
 
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
 <div class="title name input-field">
         <label for="title">Titre</label>
         <input type="text" name="title" id="title" class="validate">
 </div>
 <div class="wysiwyg" name="content" id="content"></div>
+
+<div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="image_article">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+</div>
 
 <div class="button">
         <button type="submit"  class="waves-effect waves-light btn">Mettre à jour
