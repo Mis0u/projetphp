@@ -4,6 +4,7 @@ namespace Src\Controller;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\Admin;
+use Src\Model\CommentsModel;
 use Src\Controller\ControllerDisconnect;
 
 
@@ -33,11 +34,13 @@ class ControllerAdmin extends ControllerTwig{
        
         private function admin(){
             if ($_SESSION["access"] != "confirmed"){
-                echo "Vous n'avez pas accès à cette page";
+                header("Location: /");
             } else{
                 $articleModel = new ArticleModel();
                 $articles = $articleModel->getArticles();
-                $blog = $this->render('viewAdmin.html.twig',["allArticles" => $articles, "sessionUser" => $_SESSION["username"]]);
+                $comments = new CommentsModel();
+                $getReportComments = $comments->getReportComments();
+                $blog = $this->render('admin/viewAdmin.html.twig',["allArticles" => $articles, "sessionUser" => $_SESSION["username"], "reportComm" => $getReportComments]);
             }
         }
        

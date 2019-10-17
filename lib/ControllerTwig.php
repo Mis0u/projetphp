@@ -27,7 +27,23 @@ abstract class ControllerTwig
              return substr($content, 0 ,$lastSpace). ' ...';
         });
 
+        $this->goToLine =  new \Twig\TwigFilter('goToLine', function (string $sentence, int $limit = 10){
+            $lookFor = "-";
+            $findIt = strpos($sentence, $lookFor, $limit);
+            if ($findIt){
+              $test = explode("-",$sentence);
+                return $test[0]. "<br>" .$test[1];
+            } else{
+                return $sentence;
+            }
+        });
+
+
         $this->twig->addFilter($this->truncate);
+        $this->twig->addFilter($this->goToLine);
+
+        
+      
 
         
     }

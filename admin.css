@@ -1,5 +1,32 @@
+.errors{
+  color:#CE1111;
+}
+
+.adminLog article{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminLog article h2{
+  text-align: center;
+  font-size: 30px;
+}
+.adminLog article div.button{
+  text-align:center;
+}
+
+.adminLog form{
+  width: 50%;
+}
+
 .admin h1{
     text-align: center;
+}
+
+.btn, .btn-large, .btn-small{
+  background-color: #35a4c0;
 }
 
 .admin .sticky-container a{
@@ -113,4 +140,14 @@ p.back{
 p.back i{
   transform: scaleY(-1);
   font-size: 3rem;
+}
+
+/*QUERIES*/
+
+@media screen and (max-width: 640px){
+  .adminLog form{width: 80%;}
+}
+
+@media screen and (max-width: 480px){
+  .adminLog form h2{font-size: 20px;}
 }

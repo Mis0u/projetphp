@@ -17,21 +17,35 @@ class Admin extends Model{
         return $deleteArticle;
     }
 
-    public function deleteComm($idComm){
-        $sql = "DELETE FROM commentaires WHERE id_comm = ?";
-        $deleteComm= $this->executeRequest($sql, array($idComm));
-        return $deleteComm;
+
+
+    public function updateTitle($idArticle, $title){
+        $sql = "UPDATE article SET title = ? WHERE id_article = ?";
+        $updateTitle= $this->executeRequest($sql, array($title,$idArticle));
+        return $updateTitle;
     }
 
-    public function update($idArticle, $title,$content,$img){
-        $sql = "UPDATE article SET title = ?, content = ?, image_article = ? WHERE id_article = ?";
-        $updateArticle= $this->executeRequest($sql, array($title,$content,$img,$idArticle));
-        return $updateArticle;
+    public function updateContent($idArticle,$content){
+        $sql = "UPDATE article SET content = ? WHERE id_article = ?";
+        $updateContent= $this->executeRequest($sql, array($content,$idArticle));
+        return $updateContent;
+    }
+
+    public function updateImg($idArticle,$img){
+        $sql = "UPDATE article SET image_article = ? WHERE id_article = ?";
+        $updateImg= $this->executeRequest($sql, array($img,$idArticle));
+        return $updateImg;
     }
 
     public function create($title,$content,$img){
         $sql = "INSERT INTO article (title,content,image_article) VALUES(?,?,?)";
         $createArticle= $this->executeRequest($sql, array($title,$content,$img));
         return $createArticle;
+    }
+
+    public function reportComment($idComm){
+        $sql = "UPDATE commentaires SET report = report + 1 WHERE id_comm = ?";
+        $report = $this->executeRequest($sql,array($idComm));
+        return $report;
     }
 }

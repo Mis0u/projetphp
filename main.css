@@ -1,14 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
 
 p, a, li, h2, h3, footer, cite{
   font-family: 'Lato', sans-serif;
 }
 
-h1{
-  font-size: 2em;
+span.error{
+  color:#CE1111;
 }
 
+.btn, .btn-large, .btn-small{
+  background-color: #35a4c0;
+}
+
+h1,h2.articleTitle{
+  font-size: 2em;
+  font-family: 'Marck Script', cursive;
+
+}
+
+h1,h2,h3{
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  color:#33a3be;
+  position: relative;
+}
+
+/* h1 span:before,
+h1 span:after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  border-bottom: 2px solid #31b7d8;
+  border-top: 2px solid #6bd4ec;
+  top: 50%;
+  width: 100%;
+}
+h1 span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+h1 span:after {
+  left: 100%;
+  margin-left: 15px;
+} */
 body {
   padding: 0;
   margin: 0;
@@ -19,9 +57,16 @@ body {
 }
 
 /*HEADER*/
+
+#header_icon{
+  display: none;
+}
+
 .accueil header .bg {
   height: 100vh;
   background-image: url("asset/images/alaska.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;;
 }
 
 .accueil nav{
@@ -29,14 +74,14 @@ body {
     box-shadow: none;
 }
 
-.accueil nav.effect{
-    background-image: linear-gradient(-6deg, #FFFEFF 0%, #D7FFFE 100%);
+.accueil nav.effect, .global header nav{
+    background: linear-gradient(to left, #2193b0, #6dd5ed);
     box-shadow: 0px 0px 2px #507096;
 }
 
 .accueil nav.effect li a{
   text-shadow: none;
-  color:#000;
+  color:#fff;
 }
 
 .accueil li a{
@@ -44,14 +89,9 @@ body {
   text-shadow: 0 0 4px #000;
 }
 
-.global header nav {
-  box-shadow: 0px 0px 2px #507096;
-  background-image: linear-gradient(-6deg, #FFFEFF 0%, #D7FFFE 100%);
-  
-}
-
 header {
   position: relative;
+  overflow: hidden;
 }
 header nav {
   position: fixed;
@@ -79,7 +119,8 @@ header nav ul li {
 }
 header nav ul li a {
   text-decoration: none;
-  color:#000;
+  color:#fff;
+  letter-spacing:2px;
 }
 
 .logo {
@@ -97,15 +138,29 @@ nav .logo img {
 /*HOMEPAGE*/
 
 .accueil section{
-  grid-template-columns: repeat(3,1fr);
-  grid-template-rows: 27% 1fr;
-  grid-template-areas: "welcome welcome welcome"". blog .";
-  display: grid;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.accueil .bg{
+  transform: scale(1);
+  transition: transform 14s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accueil .bg p{
+  font-size: 7rem;
+  text-shadow: rgb(0, 0, 0) 1px 0px 0px, rgb(0, 0, 0) 0.540302px 0.841471px 0px, rgb(0, 0, 0) -0.416147px 0.909297px 0px, rgb(0, 0, 0) -0.989992px 0.14112px 0px, rgb(0, 0, 0) -0.653644px -0.756802px 0px, rgb(0, 0, 0) 0.283662px -0.958924px 0px, rgb(0, 0, 0) 0.96017px -0.279415px 0px;
+  color: #FFF;
+  font-family: 'Marck Script', cursive;
+  opacity: 0;
+  transition: opacity 4s ease;
 }
 
 .accueil section article:first-child{
-  grid-area: welcome;
   margin-bottom: 100px;
 }
 
@@ -113,31 +168,72 @@ nav .logo img {
   font-weight: 700;
 }
 
-.accueil section article:last-child{
-  grid-area: blog;
+.accueil section div.container{
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  display: grid;
+  grid-gap: 20px;
 }
 
+.accueil .presentation h1{
+  margin-bottom: 70px;
+}
 
-.accueil .presentation figure img{
+.accueil .presentation .little-presentation img{
   max-width: 100%;
-  height: 200px;
+  height: 340px;
+  box-shadow: 0 0 3px #000;
 }
 
-.accueil .presentation figure{
+.accueil .presentation .little-presentation{
   display:flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
 }
 
-/*SECTION*/
+.accueil .presentation .little-presentation figcaption{
+  width: 100%;
+  text-align: center;
+}
 
+.accueil .presentation .little-presentation figcaption h2{
+  display: inline-block;
+  border-bottom: 2px solid #40aec9;
+}
 
+.accueil .presentation .little-presentation figcaption p:not(.see-more){
+  font-size: 23px;
+  margin-top: 0;
+}
 
+.accueil .presentation p.button{
+  text-align: center;
+}
+
+.accueil .bg-content{
+  height: 400px;
+  background-image: url("asset/images/mountain-tree.jpg");
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accueil .bg-content p{
+  font-size: 30px;
+  color: #FFF;
+  text-shadow: 1px 1px 21px #44b1cc;
+}
+
+/*ABOUT*/
 
 section {
   margin-top: 154px;
   flex-grow: 1;
 }
-section .autor-content {
+.about section .autor-content {
   background-image: url("asset/images/jean-forteroche.jpg");
   background-size: cover;
   background-position: 0 -244px;
@@ -145,13 +241,13 @@ section .autor-content {
   height: 500px;
   position: relative;
 }
-section .autor-content .about {
+.about section .autor-content .about {
   width: 50%;
   right: 0;
   top: 13%;
   position: absolute;
 }
-section blockquote {
+.about section blockquote {
   margin: 0;
   background-color: rgba(0, 0, 0, 0.4);
   padding: 20px;
@@ -159,36 +255,36 @@ section blockquote {
   box-shadow: 1px 1px 9px #000;
   border:0;
 }
-section blockquote p {
+.about section blockquote p {
   padding: 15px;
   color: #fff;
   border-radius: 5px;
   text-align: center;
 }
-section blockquote p:before {
+.about section blockquote p:before {
   content: "“";
   font-size: 26px;
 }
-section blockquote p:after {
+.about section blockquote p:after {
   content: "”";
   font-size: 26px;
 }
-section blockquote footer {
+.about section blockquote footer {
   color: #fff;
   text-align: center;
 }
-section .blog-about {
+ section .blog-about {
   width: 50%;
   margin: 50px auto 0 auto;
   padding: 20px;
-  background-image: linear-gradient(to top, #476175 0%, #517fa4 100%);
+  border:12px double #64cde6;
 }
 section .blog-about h1, section .blog-about p {
-  color: #fff;
+  color: #000;
 }
 section .blog-about h1 {
   text-align: center;
-  font-size: 22px;
+  font-size: 62px;
 }
 section .blog-about p {
   font-size: 20px;
@@ -199,9 +295,9 @@ section .blog-about p:last-child {
 }
 section .blog-about p:last-child a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   padding: 15px;
-  border: 1px solid #fff;
+  border: 1px solid #000;
   position: relative;
   z-index: 1;
   transition: color 0.9s ease;
@@ -243,8 +339,8 @@ section .blog-about p:last-child a:hover {
 }
 
  figure.cover_article img{
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
  figure.cover_article:before{
@@ -263,15 +359,27 @@ section .blog-about p:last-child a:hover {
 }
 
  div.box-content{
-  border:1px solid #000;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  transition: 0.2s;
 }
 
- div.box-content h1, div.box-content .date{
+div.box-content:hover{
+  box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
+  transform:translateY(-0.5%)
+}
+
+ div.box-content h2, div.box-content .date{
   text-align: center;
 }
 
  div.box-content .resumeArticle{
   padding: 20px;
+}
+
+div.box-content .resumeArticle p{
+  padding: 0;
+  margin:0;
+  text-align: justify;
 }
 
 .see-more{
@@ -280,11 +388,85 @@ section .blog-about p:last-child a:hover {
 
 
 /*Article*/
-.article p, .article h1, .article div.pagination {
+
+.global.article{
+  padding: 0 30px;
+}
+
+.article p{
   color: #000;
 }
 
+.global.article h1 {
+  font-size: 3.2em;
+}
+
+.global.article article .box-article{
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.global.article article .createAt{
+    font-style: italic;
+    font-size: 15px;
+    margin-top: 0;
+}
+.global.article article .authorComment{
+  font-size: 20px;
+  color: #2294b1;
+  font-weight: 700;
+}
+
+.global.article article .authorComment .dateComm{
+  font-size: 15px;
+  color: #406067;
+  text-decoration: underline;
+  font-weight: 400;
+}
+
+.global.article article .authorComment .report{
+  float: right;
+}
+
+.global.article article .box-comments{
+  padding: 0 20px 20px 20px;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.global.article article .box-comments:hover{
+  background-color: #d8edf3;
+}
+
+.global.article article .box-comments:not(:last-child){
+  border-bottom: 1px solid #406067
+}
+
 /*FORM*/
+
+.global.article form{
+  border: 1px solid #2395b2;
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.global.article form h2{
+    margin-top: 0;
+    font-size: 20px;
+    text-align: center;
+    background: linear-gradient(to left, #2193b0, #6dd5ed);
+    color:#FFF;
+    padding: 10px;
+}
+
+.global.article form .input-field, .global.article form .input-field label{
+  padding: 0 30px;
+}
+
+.global.article form div.button{
+  text-align: center;
+  padding-bottom: 20px;
+}
 
 .contact h1{
   text-align: center;
@@ -303,6 +485,140 @@ section .blog-about p:last-child a:hover {
   width: 36%;
 }
 
+/*FOOTER*/
+
 footer p{
   text-align: center;
 }
+
+/*QUERIES*/
+
+@media screen and (max-width: 1024px){
+  .accueil header .bg{transform:scale(1) !important}
+  .accueil .bg p{opacity: 1 !important;font-size: 4rem;}
+  .contact form div{width:80%}
+}
+
+@media screen and (max-width: 768px){
+  .accueil .bg-content p{font-size: 22px;}
+  .accueil .presentation h1{margin-bottom: 30px;}
+}
+
+@media screen and (max-width: 640px){
+
+  .accueil header .bg{
+    height: 50vh;
+  }
+
+  .accueil .bg-content p{
+    font-size: 19px;
+  }
+
+  header nav.effect{
+    height: 50px;
+    background: linear-gradient(to left, rgba(33, 147, 176, 0.82), rgba(109, 213, 237, 0.88))
+  }
+
+  header nav ul{
+    display: none;
+  }
+
+  header nav ul.actif{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    background: linear-gradient(to left, rgba(33, 147, 176, 0.82), rgba(109, 213, 237, 0.88))
+  }
+
+  header nav ul.actif li a{
+    font-weight: 700;
+    font-size:22px;
+  }
+
+ #header_icon{
+    position:relative;
+    cursor:pointer;
+    height:100%;
+    width:26px;
+    display:block;
+    margin-left: auto;
+    z-index: 99;
+  }
+
+  header nav.effect #header_icon{
+    transform: translate(-30px, 18px);
+  }
+
+  header nav #header_icon{
+    transform: translate(-30px, 60px);
+  }
+
+  #header_icon .line{
+    width:25px;
+    height:3px;
+    background:#000;
+    position:absolute;
+    filter: invert(1);
+    transform:rotate(0deg);
+    transition:transform 0.5s ease
+  }
+   #header_icon .line:first-child{top:0}
+   #header_icon .line:nth-child(2){top:8px}
+   #header_icon .line:nth-child(3){top:16px}
+  
+   #header_icon .line.actif{
+    top:8px;
+    
+  }
+   #header_icon .line.actif:nth-child(2){
+    opacity:0;
+  }
+   #header_icon .line.actif:first-child{
+    transform:rotate(45deg)
+  }
+   #header_icon .line.actif:last-child{
+    transform:rotate(-45deg)
+  }
+
+  .accueil .presentation .little-presentation figcaption p:not(.see-more){
+    font-size:20px;
+  }
+
+  .accueil .presentation .little-presentation figcaption h2{
+    font-size:30px;
+  }
+
+  .global.article form{
+    width:100%;
+  }
+  .global.article section{
+    margin-top:40px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .accueil .bg-content p{font-size:17px;}
+}
+
+@media screen and (max-width: 480px){
+  .accueil .bg-content{display: none;}
+  .accueil section article:first-child{
+    margin-bottom: 0;
+  }
+  .accueil .bg p{font-size: 3rem;}
+}
+
+@media screen and (max-width: 380px){
+  .accueil .presentation .little-presentation img{
+    height: 220px;
+  }
+  h1{font-size:35px}
+
+  .accueil .bg p{font-size: 2.5rem;}
+}
+
+

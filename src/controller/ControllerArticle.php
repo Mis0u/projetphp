@@ -27,7 +27,7 @@ class ControllerArticle extends ControllerTwig{
 
   private function currentPage($nbPages){
     $get = $this->request->getGet();
-    if(isset($get['page']) AND !empty($get['page'])){
+    if(isset($get['page']) AND $this->formValidator->isNotEmpty($get['page'])){
       $currentPage = intval($get['page']);
       return $currentPage > $nbPages ? $nbPages : $currentPage;
     } 
@@ -38,16 +38,18 @@ class ControllerArticle extends ControllerTwig{
   private function postComm($idArticle){
     if ($this->request->getMethod() == "POST"){
       $post = $this->request->getPost();
-      if ($this->formValidator->isNotEmpty($post)&& $this->formValidator->isNotEmpty($post["name"]) && $this->formValidator->isNotEmpty($post["message"]) ){
-        $comments = new CommentsModel();
-        $comments->postComm($idArticle,$post["name"],$post["message"]);
+      if ($this->formValidator->isNotEmpty($post)
+        && $this->formValidator->isNotEmpty($post["name"]) 
+        && $this->formValidator->isNotEmpty($post["message"]) ){
+          $comments = new CommentsModel();
+          $comments->postComm($idArticle,$post["name"],$post["message"]);
             header("Location: /blog/chapitre/$idArticle");
       }
       if(!$this->formValidator->isNotEmpty($post["name"])){
         $this->errors["name"] = "Vous devez indiquer votre nom";
       }
       if(!$this->formValidator->isNotEmpty($post["message"])){
-        $this->errors["message"] = "Vous devez écrire votre message";
+        $this->errors["message"] = "Vous devez écrire votre commentaire";
       }
     }
      

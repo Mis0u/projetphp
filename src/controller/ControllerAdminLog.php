@@ -29,10 +29,10 @@ class ControllerAdminLog extends ControllerTwig{
                 $errors["password"] = "Ce champ ne peut pas être vide";
             }
             if(!password_verify($post["password"],$data["userpass"])){
-                $errors["password"] = "Ce mot de pass n'est pas valide";
+                $errors["password"] = "Ce mot de passe n'est pas valide";
             }
         }
-        $this->render('viewAdminLog.html.twig',["errors" => $errors]);
+        $this->render('admin/viewAdminLog.html.twig',["errors" => $errors]);
     }
 
 }

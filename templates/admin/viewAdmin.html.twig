@@ -1,0 +1,104 @@
+{% extends "admin/templateAdmin.html.twig" %}
+
+{% block title %}
+    <title>Admin</title>
+{% endblock %}
+
+{% block body %}
+    <body class="admin">
+{% endblock %}
+{% block content %} 
+    <div class="sticky-container">
+        <div class="container">
+            <div class="hamb">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul>
+                <a href="disconnect" name="disconnect" value="logout">Se déconnecter</a>
+                <a href="create">Créer un article</a>
+            </ul>
+        </div>
+    </div>
+
+    <h1>Bienvenue {{ sessionUser }}</h1>
+    <div class="content">
+        <table class="chapter responsive-table">
+            <thead>
+                <tr>
+                    <th>Article</th>
+                    <th>Commentaires</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for articles in allArticles %}
+
+                <tr>
+                    <td><a href="chapitre/{{ articles.id_article }}">{{ articles.title }}</a></td>
+                    <td><a href="comments/{{ articles.id_article }}"><i class="material-icons">chrome_reader_mode</i> </a></td>
+                    <td><a href="update/{{ articles.id_article }}" class="update" ><i class="material-icons">restore_page</i></a></td>
+                    <td><a href="#modal{{ articles.id_article }}" class="delete modal-trigger"><i class="material-icons">delete</i></a>
+                        <div id="modal{{ articles.id_article }}" class="modal">
+                                <div class="modal-content">
+                                  <h4>Voulez-vous vraiment supprimer cet article ?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                  <a href="delete/{{ articles.id_article }}" class="modal-close waves-effect waves-green btn-flat">Oui</a>
+                                  <a href="#" class="modal-close waves-effect waves-green btn-flat">Non</a>
+                                </div>
+                            </div>
+                    </td>
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Commentaires signalés</h2>
+        <table class="reportComment responsive-table">
+                <thead>
+                        <tr>
+                            <th>Auteur</th>
+                            <th>Commentaires</th>
+                            <th>Signaler</th>
+                            <th>Chapitre</th>
+                            <th>Supprimer</th>
+                        </tr>
+                </thead>
+                <tbody>
+            {% for alertComm in reportComm %}
+                {% if alertComm.report > 0 %}
+                <tr>
+                    <td>{{ alertComm.author }}</td>
+                    <td><a href="#modal{{ alertComm.id_comm }}" class=" modal-trigger"><i class="material-icons">chrome_reader_mode</i></a>
+                        <div id="modal{{ alertComm.id_comm }}" class="modal">
+                                <div class="modal-content">
+                                  <p>{{ alertComm.com_content }}</p>
+                                </div>
+
+                        </div>
+                    </td>
+                    <td>{{ alertComm.report }}</td>
+                    <td>{{ alertComm.title }}</td>
+                    <td>
+                        <a href="#modal2{{ alertComm.id_comm }}" class="delete modal-trigger"><i class="material-icons">delete</i></a>
+                        <div id="modal2{{ alertComm.id_comm }}" class="modal">
+                                <div class="modal-content">
+                                  <h4>Voulez-vous vraiment supprimer ce commentaire ?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                  <a href="delete/comm/{{ alertComm.id_comm }}" class="modal-close waves-effect waves-green btn-flat">Oui</a>
+                                  <a href="#" class="modal-close waves-effect waves-green btn-flat">Non</a>
+                                </div>
+                            </div>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+{% endblock %}

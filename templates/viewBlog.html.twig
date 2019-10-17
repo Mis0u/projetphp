@@ -18,9 +18,9 @@
             {% for articles in allArticles %}
                 <div class="box-content">
                     <figure class="cover_article"><img src="{{ articles.image_article }}"></figure>
-                    <h1>{{ articles.title }}</h1>
+                    <h2 class="articleTitle">{{ articles.title|goToLine|raw }}</h2>
                     <p class ="date">{{ articles.date_article }}</p>
-                    <p class = "resumeArticle"> {{ articles.content | truncate }} </p>
+                    <div class = "resumeArticle"> {{ articles.content|truncate|raw }} </div>
                     <p class="see-more"><a class="waves-effect waves-light btn" href="blog/chapitre/{{ articles.id_article }}">Voir plus</a></p>
                 </div>
                 

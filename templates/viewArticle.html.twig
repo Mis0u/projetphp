@@ -1,73 +1,85 @@
-
-{% extends session  ? "templateAdmin.html.twig" : "template.html.twig"   %}
+{% extends session  ? "admin/templateAdmin.html.twig" : "template.html.twig"   %}
 
 {% block title %}
-    <title>Article</title>
+<title>Article</title>
 {% endblock %}
 
 {% block body %}
-        {% if session  %}
-                <body class="admin admin_article">
-        {% else %}
-        <body class="global article">
-        {% endif %}
-{% endblock %}
-
-{% block content %}
 {% if session  %}
-<p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
-{% endif %}
-        <div class = "article">
-                <div class="box-article">
-                <h1> {{ article.title }}<span> {{ article.date_article }}</span></h1>
-                        <p> {{ article.content }} </p>
-                </div>
-                {% for commentsArticle in comms %}
-                <div class = "box-comments">
-                        <h1> {{ commentsArticle.author }} <span>{{ commentsArticle.date_comm }}</span> </h1>
-                        <p> {{ commentsArticle.content }}</p>
-                </div>
-                {% if session  %}
-                <p><a href="/admin/delete/comm/{{ commentsArticle.id_comm }}" class="delete" name="delete"><i class="material-icons">delete</i></a></p>
+
+<body class="admin admin_article">
+        {% else %}
+
+        <body class="global article">
                 {% endif %}
-                {% endfor %}
+                {% endblock %}
 
-        </div>
+                {% block content %}
+                {% if session  %}
+                <p class="back"><a href="/admin/auth" title="retour"><i
+                                        class="medium material-icons right">subdirectory_arrow_left</i></a></p>
+                {% endif %}
+                <div class="article">
+                        <div class="box-article">
+                                <h1>{{ article.title|goToLine|raw }}</h1>
 
-<form method ="post" action = "">
-        <div class ="name input-field">
-            <label for="name"> Votre nom : *</label>
-            <input name="name" id="name" type="text" class="validate">
-            {% if errors.name is defined %}
-            <span class="error">{{errors.name}}</span> 
-            {% endif %}
-        </div>
-        <div class="message input-field">
-            <label for="message"> Votre message : *</label>
-            <textarea name="message" id="message" class="materialize-textarea"></textarea>
-            {% if errors.message is defined %}
-            <span class="error">{{errors.message}}</span> 
-            {% endif %}
-        </div>
-        <div class="button">
-                <button type="submit"  class="waves-effect waves-light btn">Envoyer
-                        <i class="material-icons right">send</i>
-                </button>
-        </div>
-</form>
-<div class = "pagination">
+                                <p> {{ article.content|raw }} </p>
+                                <p class="createAt"> Créé le {{ article.date_article }}</p>
 
-           <p>Pages :
+                        </div>
+                        {% if not session %}
 
-         {% if nbPages == 1 or not comms %}
-                <span>1</span>
-                {% else %}
-                {% for nbPages in 1..nbPages %}
-                <a href = "?page= {{ nbPages }}">{{ nbPages }} </a>
-                {% endfor %}
-        {% endif %} 
-        </p>
+                        {% for commentsArticle in comms %}
+                        <div class="box-comments">
+                                <p class="authorComment"> {{ commentsArticle.author }} <span class="dateComm">
+                                                {{ commentsArticle.date_comm }}</span> <span class="report"><a href="/report/{{ commentsArticle.id_comm }}"
+                                                        title="Signaler"> <i
+                                                                class="small material-icons">warning</i></a></span></p>
+                                <p> {{ commentsArticle.content }}</p>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+                {% if not session %}
+                
+                <div class="pagination">
 
-       
-</div>
-{% endblock %}
+                                <p>Pages :
+        
+                                        {% if nbPages == 1 or not comms %}
+                                        <span>1</span>
+                                        {% else %}
+                                        {% for nbPages in 1..nbPages %}
+                                        <a href="?page= {{ nbPages }}">{{ nbPages }} </a>
+                                        {% endfor %}
+                                        {% endif %}
+                                </p>
+        
+        
+                        </div>
+
+                <form method="post" action="">
+                        <h2>Poster un commentaire</h2>
+                        <div class="name input-field">
+                                <label for="name"> Votre nom : *</label>
+                                <input name="name" id="name" type="text" class="validate">
+                                {% if errors.name is defined %}
+                                <span class="error">{{errors.name}}</span>
+                                {% endif %}
+                        </div>
+                        <div class="message input-field">
+                                <label for="message"> Votre message : *</label>
+                                <textarea name="message" id="message" class="materialize-textarea"></textarea>
+                                {% if errors.message is defined %}
+                                <span class="error">{{errors.message}}</span>
+                                {% endif %}
+                        </div>
+                        <div class="button">
+                                <button type="submit" class="waves-effect waves-light btn">Envoyer
+                                        <i class="material-icons right">send</i>
+                                </button>
+                        </div>
+                </form>
+                
+                {% endif %}
+                {% endblock %}

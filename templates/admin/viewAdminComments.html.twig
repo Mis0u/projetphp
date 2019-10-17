@@ -1,0 +1,48 @@
+{% extends "admin/templateAdmin.html.twig" %}
+
+{% block title %}<title>Modifier</title>{% endblock %}
+
+{% block body %}<body class ="update">{% endblock %}
+
+{% block content %}
+
+<div class="content">
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <th>Auteur</th>
+                    <th>Commentaires</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+
+                <tr>
+                    <td>{{ comment.author }}</td>
+                    <td><a href="#modal{{ comment.id_comm }}" class="modal-trigger"><i class="material-icons">chrome_reader_mode</i> </a>
+                        <div id="modal{{ comment.id_comm }}" class="modal">
+                                <div class="modal-content">
+                                  {{ comment.content }}
+                                </div>
+                        </div>
+                    </td>
+                    <td><a href="#modal2{{ comment.id_comm }}" class="delete modal-trigger"><i class="material-icons">delete</i></a>
+                        <div id="modal2{{ comment.id_comm }}" class="modal">
+                                <div class="modal-content">
+                                  <h4>Voulez-vous vraiment supprimer ce commentaire ?</h4>
+                                </div>
+                                <div class="modal-footer">
+                                  <a href="/admin/delete/comm/{{ comment.id_comm }}" class="modal-close waves-effect waves-green btn-flat">Oui</a>
+                                  <a href="#" class="modal-close waves-effect waves-green btn-flat">Non</a>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="asset/images/logo.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/main.css">
@@ -15,16 +16,20 @@
 {% block body %} {% endblock %}
     <header>
         <nav>
+            <div id="header_icon">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+            </div>
             <div class="logo"><img src="/asset/images/logo.png"/></div>
             <ul>
-                <li class="hamburger"></li>
                 <li><a href="/">Accueil</a></li>
                 <li><a href="/about">A propos de l'auteur</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </nav> 
-        <div class="bg"></div>            
+        <div class="bg"><p>Un billet pour l'Alaska</p></div>            
     </header>
     <section>
         {% block pageTitle %} {% endblock %}
