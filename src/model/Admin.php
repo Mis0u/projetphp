@@ -16,9 +16,7 @@ class Admin extends Model{
         $deleteArticle= $this->executeRequest($sql, array($idArticle));
         return $deleteArticle;
     }
-
-
-
+    
     public function updateTitle($idArticle, $title){
         $sql = "UPDATE article SET title = ? WHERE id_article = ?";
         $updateTitle= $this->executeRequest($sql, array($title,$idArticle));
@@ -43,9 +41,4 @@ class Admin extends Model{
         return $createArticle;
     }
 
-    public function reportComment($idComm){
-        $sql = "UPDATE commentaires SET report = report + 1 WHERE id_comm = ?";
-        $report = $this->executeRequest($sql,array($idComm));
-        return $report;
-    }
 }

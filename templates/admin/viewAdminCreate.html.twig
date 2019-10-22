@@ -2,7 +2,7 @@
 
 {% block title %}<title>Création d'un nouvel article</title>{% endblock %}
 
-{% block body %}<body class ="create">{% endblock %}
+{% block body %}<body class ="create cu">{% endblock %}
 
 {% block content %}
 
@@ -10,31 +10,31 @@
 
 <h1>Création d'un nouvel article</h1>
 
-<form method="POST" action="" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
 <div class="title name input-field">
         <label for="title">Titre</label>
-        <input type="text" name="title" id="title" class="validate">
+        <input type="text" name="title" id="title" class="validate" required autofocus>
         {% if errors.title is defined %}
-        <span class="error">{{errors.title}}</span> 
+        <span class="errors">{{errors.title}}</span> 
         {% endif %}
 </div>
 
-<div class="wysiwyg" name="content" id="content"></div>
+<div class="wysiwyg" id="content"></div>
 {% if errors.content is defined %}
-<span class="error">{{errors.content}}</span> 
+<span class="errors">{{errors.content}}</span> 
 {% endif %}
 
 <div class="file-field input-field">
-        <div class="btn">
+        <div class="btn  tooltipped" data-position="bottom" data-tooltip="Max 1Mo">
           <span>File</span>
-          <input type="file" name="image_article">
+          <input type="file" name="image_article" required>
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text" name="path_img">
         </div>
 </div>
 {% if errors.image_article is defined %}
-<span class="error">{{errors.image_article}}</span> 
+<span class="errors">{{errors.image_article}}</span> 
 {% endif %}
 
 <div class="button">

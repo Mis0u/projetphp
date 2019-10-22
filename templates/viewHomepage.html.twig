@@ -12,7 +12,7 @@
     <div class="presentation">
         <h1>Bienvenue !</h1>
         <figure class="little-presentation">
-            <img src="/../asset/images/JF-back.jpg">
+            <img src="/../asset/images/JF-back.jpg" alt="jean Forteroche auteur billet alaska">
             <figcaption>   
                 <h2>L'auteur</h2>             
                 <p>Je suis ravie de vous accueillir dans mon univers d’écrivain, fait <strong>d’introspection,</strong> <strong>de poésie,</strong> <strong>de légèreté et d’humour</strong></p>
@@ -30,10 +30,10 @@
     <div class="container">
     {% for lastArticle in lastArticle %}
     <div class="box-content">
-        <figure class="cover_article"><img src="{{ lastArticle.image_article}}"></figure>
-        <h2 class="articleTitle"> {{lastArticle.title|goToLine|raw}}</h2>
+        <figure class="cover_article"><img src="{{ lastArticle.image_article}}" alt="chapitre billet alaska"></figure>
+        <h2 class="articleTitle"> {{lastArticle.title|goToLine|capitalize|raw}}</h2>
         <p class="date"> {{lastArticle.date_article}}</p>
-        <p class = "resumeArticle"> {{ lastArticle.content|truncate|raw }} </p>
+        <div class = "resumeArticle"> {{ lastArticle.content|truncate|raw }} </div>
         <p class="see-more"><a class="waves-effect waves-light btn" href="blog/chapitre/{{ lastArticle.id_article}}">Voir plus</a></p>
     </div>
 

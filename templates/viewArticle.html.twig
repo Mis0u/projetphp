@@ -1,24 +1,15 @@
-{% extends session  ? "admin/templateAdmin.html.twig" : "template.html.twig"   %}
+{% extends "template.html.twig"   %}
 
 {% block title %}
-<title>Article</title>
+        <title>Article</title>
 {% endblock %}
 
 {% block body %}
-{% if session  %}
-
-<body class="admin admin_article">
-        {% else %}
-
         <body class="global article">
-                {% endif %}
-                {% endblock %}
+ {% endblock %}
 
-                {% block content %}
-                {% if session  %}
-                <p class="back"><a href="/admin/auth" title="retour"><i
-                                        class="medium material-icons right">subdirectory_arrow_left</i></a></p>
-                {% endif %}
+        {% block content %}
+
                 <div class="article">
                         <div class="box-article">
                                 <h1>{{ article.title|goToLine|raw }}</h1>
@@ -27,30 +18,40 @@
                                 <p class="createAt"> Créé le {{ article.date_article }}</p>
 
                         </div>
-                        {% if not session %}
-
                         {% for commentsArticle in comms %}
                         <div class="box-comments">
                                 <p class="authorComment"> {{ commentsArticle.author }} <span class="dateComm">
-                                                {{ commentsArticle.date_comm }}</span> <span class="report"><a href="/report/{{ commentsArticle.id_comm }}"
-                                                        title="Signaler"> <i
-                                                                class="small material-icons">warning</i></a></span></p>
+                                                {{ commentsArticle.date_comm }}</span> <span class="report"><a href="#modal{{commentsArticle.id_comm }}" class="signaler modal-trigger"
+                                                        title="Signaler"> 
+                                                        <i class="small material-icons">feedback</i></a></span>
+                                                        <div id="modal{{commentsArticle.id_comm }}" class="modal">
+                                                                <div class="modal-content">
+                                                                  <h4>Voulez-vous vraiment signaler ce commentaire ?</h4>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <a href="/report/{{ commentsArticle.id_comm }}" class="modal-close waves-effect waves-green btn-flat">Oui</a>
+                                                                  <a href="#" class="modal-close waves-effect waves-green btn-flat">Non</a>
+                                                                </div>
+                                                        </div>
+                                </p>
                                 <p> {{ commentsArticle.content }}</p>
                         </div>
                         {% endfor %}
-                        {% endif %}
                 </div>
-                {% if not session %}
                 
                 <div class="pagination">
 
-                                <p>Pages :
+                                <p>
         
                                         {% if nbPages == 1 or not comms %}
                                         <span>1</span>
                                         {% else %}
-                                        {% for nbPages in 1..nbPages %}
-                                        <a href="?page= {{ nbPages }}">{{ nbPages }} </a>
+                                                {% for nbPages in 1..nbPages %}
+                                                        {% if nbPages == actualPage %}
+                                                                <span class="page current">{{ nbPages }}</span>
+                                                        {% else %}
+                                                        <a href="?page={{ nbPages }}" class="page">{{ nbPages }} </a>
+                                                        {% endif %}
                                         {% endfor %}
                                         {% endif %}
                                 </p>
@@ -80,6 +81,4 @@
                                 </button>
                         </div>
                 </form>
-                
-                {% endif %}
                 {% endblock %}

@@ -1,11 +1,11 @@
 <?php
 
-namespace Src\Controller;
+namespace Src\Controller\admin;
 use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\Admin;
 use Src\Model\CommentsModel;
-use Src\Controller\ControllerDisconnect;
+use Src\Controller\admin\ControllerDisconnect;
 
 
 class ControllerAdmin extends ControllerTwig{
@@ -40,7 +40,8 @@ class ControllerAdmin extends ControllerTwig{
                 $articles = $articleModel->getArticles();
                 $comments = new CommentsModel();
                 $getReportComments = $comments->getReportComments();
-                $blog = $this->render('admin/viewAdmin.html.twig',["allArticles" => $articles, "sessionUser" => $_SESSION["username"], "reportComm" => $getReportComments]);
+                $sumReport = $comments->sumReport();
+                $blog = $this->render('admin/viewAdmin.html.twig',["allArticles" => $articles, "sessionUser" => $_SESSION["username"], "reportComm" => $getReportComments, "sumReports" => $sumReport]);
             }
         }
        

@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Controller;
+namespace Src\Controller\admin;
 use Lib\ControllerTwig;
 use Src\Model\CommentsModel;
 
@@ -9,7 +9,9 @@ class ControllerAdminComms extends ControllerTwig{
     public function displayComms($idArticle){
         $comms = new CommentsModel();
         $displayComms = $comms->getAllComments($idArticle);
-        $viewComms= $this->render("admin/viewAdminComments.html.twig",["comments" => $displayComms]);
+        $comments = new CommentsModel();
+        $countComments = $comments->countComments($idArticle);
+        $viewComms= $this->render("admin/viewAdminComments.html.twig",["comments" => $displayComms, "countComms" => $countComments]);
     }
 
     public function deleteComm($idComm){

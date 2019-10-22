@@ -16,6 +16,12 @@ class CommentsModel extends Model{
         return $comments;
     }
 
+    public function getIdArticleFromCom($idComm){
+        $sql = "SELECT id_article FROM commentaires WHERE id_comm = ?";
+        $comments = $this->executeRequest($sql, array($idComm))->fetch();
+        return $comments;
+    }
+
     public function countComments($id_article){
         $sql = "SELECT COUNT(*) as nbcomm FROM commentaires WHERE id_article = ?";
         $totalComm = $this->executeRequest($sql, [$id_article])->fetch();
@@ -35,6 +41,25 @@ class CommentsModel extends Model{
                 ON com.id_article = art.id_article";
         $getReport = $this->executeRequest($sql)->fetchAll();
         return $getReport;
+    }
+
+    
+    public function reportComment($idComm){
+        $sql = "UPDATE commentaires SET report = report + 1 WHERE id_comm = ?";
+        $report = $this->executeRequest($sql,array($idComm));
+        return $report;
+    }
+
+    public function authorizeComment($idComm){
+        $sql = "UPDATE commentaires SET report = 0 WHERE id_comm = ?";
+        $report = $this->executeRequest($sql,array($idComm));
+        return $report;
+    }
+
+    public function sumReport(){
+        $sql = "SELECT SUM(report) FROM commentaires";
+        $calculateSum =$this->executeRequest($sql)->fetch();
+        return $calculateSum;
     }
 
     public function deleteComm($idComm){

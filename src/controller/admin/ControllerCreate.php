@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Controller;
+namespace Src\Controller\admin;
 use Lib\ControllerTwig;
 use Src\Model\Admin;
 use Lib\Upload;

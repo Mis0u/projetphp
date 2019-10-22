@@ -1,23 +1,23 @@
 {% extends "admin/templateAdmin.html.twig" %}
 
-{% block title %}<title>Modifier</title>{% endblock %}
+{% block title %}<title>Modification de l'article</title>{% endblock %}
 
-{% block body %}<body class ="update">{% endblock %}
+{% block body %}<body class ="update cu">{% endblock %}
 
 {% block content %}
 <p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
 
 <h1>Modification de l'article : {{article.title}}</h1>
 
-<form method="POST" action="" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
 <div class="title name input-field">
         <label for="title">Titre</label>
-        <input type="text" name="title" id="title" class="validate">
+        <input type="text" name="title" id="title" class="validate" autofocus>
 </div>
-<div class="wysiwyg" name="content" id="content"></div>
+<div class="wysiwyg" id="content"></div>
 
 <div class="file-field input-field">
-        <div class="btn">
+        <div class="btn  tooltipped" data-position="bottom" data-tooltip="Max 1Mo">
           <span>File</span>
           <input type="file" name="image_article">
         </div>
@@ -32,7 +32,7 @@
         </button>
 </div>
 {% if errors.allEmpty is defined %}
-<span class="error">{{errors.allEmpty}}</span>
+<span class="errors">{{errors.allEmpty}}</span>
 {% endif %}
 
 </form>

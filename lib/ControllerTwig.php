@@ -27,12 +27,12 @@ abstract class ControllerTwig
              return substr($content, 0 ,$lastSpace). ' ...';
         });
 
-        $this->goToLine =  new \Twig\TwigFilter('goToLine', function (string $sentence, int $limit = 10){
+        $this->goToLine =  new \Twig\TwigFilter('goToLine', function (string $sentence){
             $lookFor = "-";
-            $findIt = strpos($sentence, $lookFor, $limit);
+            $findIt = strpos($sentence, $lookFor);
             if ($findIt){
-              $test = explode("-",$sentence);
-                return $test[0]. "<br>" .$test[1];
+              $wordBreak = explode($lookFor,$sentence,2);
+                return $wordBreak[0]. "<br>" .$wordBreak[1];
             } else{
                 return $sentence;
             }

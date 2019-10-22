@@ -22,12 +22,14 @@ function adminSideBar(){
         const lines= document.querySelectorAll(".line")
         const ul = document.querySelector("ul")
         const content = document.querySelector(".container")
+        const stickyNav = document.querySelector(".sticky-container")
         hamb.addEventListener("click", () => {
         lines.forEach(line =>{
             line.classList.toggle("actif")
         })
         ul.classList.toggle("actif")
         content.classList.toggle("actif")
+        stickyNav.classList.toggle("actif");
         })
     }
 
@@ -50,8 +52,11 @@ function hamburgerResponsive(){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
+    let elemsModal = document.querySelectorAll('.modal');
+    let elemsToolTipped = document.querySelectorAll('.tooltipped');
+    
+    let instancesModal = M.Modal.init(elemsModal);
+    let instancesToolTipped = M.Tooltip.init(elemsToolTipped, {inDuration:1500});
   });
 
   function scaleBg(){

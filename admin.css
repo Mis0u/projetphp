@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Marck+Script&display=swap');
+
+h1{
+  font-family: 'Marck Script', cursive;
+}
+
+.material-tooltip {
+  background: #2bbbad;
+}
+
+h2.noComms{
+  text-align: center;
+}
+
 .errors{
   color:#CE1111;
 }
@@ -21,19 +36,29 @@
   width: 50%;
 }
 
+body{
+  background: #ebf5ff;
+}
+
+div.content{
+  padding:20px;
+}
+
 .admin h1{
     text-align: center;
+    font-size: 3rem;
 }
 
-.btn, .btn-large, .btn-small{
-  background-color: #35a4c0;
+.admin h2{
+  text-align: center;
+  font-size: 2rem;
 }
 
-.admin .sticky-container a{
+.admin .sticky-container .create{
     background-color: #007bff;
 }
 
-.admin .sticky-container button{
+.admin .sticky-container .disconnect{
     background-color:#dc3545;
 }
 
@@ -43,12 +68,101 @@
   cursor: pointer;
 }
 
-.admin .delete i{
-  color:#dc3545;
+.delete i{
+  color:#dc3545 !important;
 }
 
-.admin .content .update i{
+.update i{
   color:#007bff;
+}
+
+.admin table.chapter thead th:not(:first-child), .admin table.chapter tbody tr td:not(:first-child){
+  text-align:center;
+}
+
+.open,.modal .modal-footer{
+  background: linear-gradient(to left, #2193b0, #6dd5ed);
+}
+
+.modal .modal-footer{
+  display: flex;
+  justify-content: center;
+}
+
+.modal .modal-footer a{
+  color: #FFF;
+  transition: 0.2s;
+}
+
+.modal p{
+  color: #000;
+}
+
+.modal .modal-content{
+  white-space: normal;
+}
+
+.modal .modal-footer a:first-child:hover{
+  background: #009c13;
+}
+
+.modal .modal-footer a:last-child:hover{
+  background: #CE1111;
+}
+
+.modal h4{
+  font-size:2rem;
+  color:#FFF;
+}
+
+.noComment{
+  text-align: center;
+  color: #009c13;
+  font-weight: 700;
+}
+
+p.back{
+  display:flex;
+}
+
+p.back i{
+  transform: scaleY(-1);
+  font-size: 3rem;
+}
+
+table.chapter{
+  margin-bottom: 70px;
+}
+/*VIEW ARTICLE*/
+
+.article h1{
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+.box-article{
+  padding: 0 100px;;
+}
+
+/*Create Update*/
+
+.cu form{
+  padding:0 100px;
+  margin-bottom: 50px;
+}
+
+.cu h1{
+  text-align: center;
+  font-size: 3rem;
+}
+
+.cu .trumbowyg-box{
+  background:#FFF;
+}
+
+.cu div.button{
+  text-align: center;
 }
 
 /*Hidden Menu*/
@@ -56,9 +170,13 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: 20%;
+    height: 0;
     z-index: 5;
     width: 100%;
+}
+
+.sticky-container.actif{
+  height: 20%;
 }
 
 .admin .container{
@@ -72,7 +190,7 @@
 }
 
 .admin .container.actif{
-    background:rgba(0,0,0,0.14);
+  background: linear-gradient(to left, #2193b0, #6dd5ed);
 }
 
 .admin .hamb{
@@ -112,10 +230,11 @@
   .admin ul{
     display:flex;
     align-items:center;
-    justify-content: center;
+    justify-content: space-around;
     position:relative;
     top:-200px;
-    margin:0;
+    margin:auto;
+    width: 40%;
     transition:top 0.2s ease;
   }
   .admin ul.actif{top:0}
@@ -131,23 +250,41 @@
     color:#FFF;
 }
 
-/*DETAILS*/
-
-p.back{
-  display:flex;
-}
-
-p.back i{
-  transform: scaleY(-1);
-  font-size: 3rem;
-}
-
 /*QUERIES*/
+@media screen and (max-width: 768px){
+  table.responsive-table th{text-align: center;}
+  .box-article{
+    padding: 0 50px;;
+  }
+  .update h1{font-size: 2rem;}
+}
 
 @media screen and (max-width: 640px){
   .adminLog form{width: 80%;}
+  .modal h4{font-size: 1.5rem;}
+  .admin ul{width: 70%;}
+  table.responsive-table th{text-align: center;}
+  .cu form{
+    padding:0 50px;
+  }
+  .update h1{font-size: 1.5rem;}
+}
+
+@media screen and (max-width: 540px){
+  .modal h4{font-size: 1.2rem;}
 }
 
 @media screen and (max-width: 480px){
   .adminLog form h2{font-size: 20px;}
+  .box-article{
+    padding: 0 20px;;
+  }
+  .cu h1{font-size: 2rem;}
+  .cu div.button{padding: 10px 0;}
+}
+
+@media screen and (max-width: 380px){
+  .admin h2{font-size: 2.2rem;}
+  .admin ul{width: 100%;}
+  .modal h4{font-size: 1rem;}
 }

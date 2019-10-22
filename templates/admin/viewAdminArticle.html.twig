@@ -1,0 +1,22 @@
+{% extends "admin/templateAdmin.html.twig"   %}
+
+{% block title %}
+        <title>Article</title>
+{% endblock %}
+
+{% block body %}
+        <body class="article">
+ {% endblock %}
+
+        {% block content %}
+        <p class="back"><a href="/admin/auth" title="retour"><i class="medium material-icons right">subdirectory_arrow_left</i></a></p>
+                <div class="article">
+                        <div class="box-article">
+                                <h1>{{ article.title|goToLine|raw }}</h1>
+
+                                <p> {{ article.content|raw }} </p>
+                                <p class="createAt"> Créé le {{ article.date_article }}</p>
+
+                        </div>
+                </div>        
+        {% endblock %}

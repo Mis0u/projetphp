@@ -5,6 +5,10 @@ p, a, li, h2, h3, footer, cite{
   font-family: 'Lato', sans-serif;
 }
 
+strong{
+  font-weight:700;
+}
+
 span.error{
   color:#CE1111;
 }
@@ -16,7 +20,6 @@ span.error{
 h1,h2.articleTitle{
   font-size: 2em;
   font-family: 'Marck Script', cursive;
-
 }
 
 h1,h2,h3{
@@ -29,24 +32,6 @@ h1 {
   position: relative;
 }
 
-/* h1 span:before,
-h1 span:after {
-  content: "";
-  position: absolute;
-  height: 10px;
-  border-bottom: 2px solid #31b7d8;
-  border-top: 2px solid #6bd4ec;
-  top: 50%;
-  width: 100%;
-}
-h1 span:before {
-  right: 100%;
-  margin-right: 15px;
-}
-h1 span:after {
-  left: 100%;
-  margin-left: 15px;
-} */
 body {
   padding: 0;
   margin: 0;
@@ -68,6 +53,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;;
 }
+
+.bg p{display: none;}
 
 .accueil nav{
     background-image: none;
@@ -157,6 +144,7 @@ nav .logo img {
   color: #FFF;
   font-family: 'Marck Script', cursive;
   opacity: 0;
+  display: block;
   transition: opacity 4s ease;
 }
 
@@ -230,7 +218,7 @@ nav .logo img {
 /*ABOUT*/
 
 section {
-  margin-top: 154px;
+  margin-top: 130px;
   flex-grow: 1;
 }
 .about section .autor-content {
@@ -441,6 +429,64 @@ div.box-content .resumeArticle p{
   border-bottom: 1px solid #406067
 }
 
+.global.article .signaler:hover{
+  color:#CE1111;
+  transition: 0.2s;
+}
+.open,.modal .modal-footer{
+  background: linear-gradient(to left, #2193b0, #6dd5ed);
+}
+
+.modal .modal-footer{
+  display: flex;
+  justify-content: center;
+}
+
+.modal .modal-footer a{
+  color: #FFF;
+  transition: 0.2s;
+}
+
+.modal p{
+  color: #000;
+}
+
+.modal .modal-content{
+  white-space: normal;
+}
+
+.modal .modal-footer a:first-child:hover{
+  background: #009c13;
+}
+
+.modal .modal-footer a:last-child:hover{
+  background: #CE1111;
+}
+
+.modal h4{
+  font-size:2rem;
+  color:#FFF;
+}
+
+.global.article .pagination p{text-align: right;}
+
+.global.article .page{
+  display: inline-block;
+  margin: 0 5px;
+  width: 30px;
+  text-align: center;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #5fc9e2;
+  transition: 0.2s;
+}
+
+.global.article .page:hover, .global.article .current{
+  color: #FFF;
+  background-color:#5fc9e2;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.4)
+}
+
 /*FORM*/
 
 .global.article form{
@@ -497,11 +543,15 @@ footer p{
   .accueil header .bg{transform:scale(1) !important}
   .accueil .bg p{opacity: 1 !important;font-size: 4rem;}
   .contact form div{width:80%}
+  .about section .autor-content{background-position: 0 -84px;}
+  section .blog-about{width:100%;}
 }
 
 @media screen and (max-width: 768px){
   .accueil .bg-content p{font-size: 22px;}
   .accueil .presentation h1{margin-bottom: 30px;}
+  .about section .autor-content .about{width: 60%;}
+  section .blog-about{margin:0}
 }
 
 @media screen and (max-width: 640px){
@@ -598,10 +648,21 @@ footer p{
   .global.article section{
     margin-top:40px;
   }
+
+  .about section .autor-content{
+    height: 380px;
+  }
+
+  section{margin-top: 52px;}
 }
 
 @media screen and (max-width: 540px){
   .accueil .bg-content p{font-size:17px;}
+  .about section .autor-content {height: 270px;}
+  .about section .autor-content .about{width: 100%;bottom:0;top: auto;height:100%}
+  .about section blockquote{width: 100%;height:100%}
+  section .blog-about{margin-top: 20px;}
+
 }
 
 @media screen and (max-width: 480px){
@@ -610,6 +671,7 @@ footer p{
     margin-bottom: 0;
   }
   .accueil .bg p{font-size: 3rem;}
+  .about section .autor-content{height:236px}
 }
 
 @media screen and (max-width: 380px){
@@ -619,6 +681,7 @@ footer p{
   h1{font-size:35px}
 
   .accueil .bg p{font-size: 2.5rem;}
+  .about section .autor-content{background-position: 0;}
 }
 
 
