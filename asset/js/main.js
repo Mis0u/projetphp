@@ -47,8 +47,6 @@ function hamburgerResponsive(){
                 ul.classList.toggle("actif")
                 })
     }
-    
-    
 }
 
 document.addEventListener('DOMContentLoaded', function() {

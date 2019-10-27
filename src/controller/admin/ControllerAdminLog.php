@@ -4,14 +4,16 @@ namespace Src\Controller\admin;
 use Lib\ControllerTwig;
 use Src\Model\Admin;
 
-class ControllerAdminLog extends ControllerTwig{
-
-    public function getAdminLog(){
+class ControllerAdminLog extends ControllerTwig
+{
+    public function getAdminLog()
+    {
         $errors = [];
         if ($this->request->getMethod() == "POST"){
             $post = $this->request->getPost();
             $admin = new Admin();
-            $user = $admin->user();
+            $userName = $post["username"];
+            $user = $admin->user($userName);
             $data = $user->fetch();
             if ($this->formValidator->isNotEmpty($post) 
                 && $this->formValidator->isNotEmpty($post["username"])
@@ -24,6 +26,9 @@ class ControllerAdminLog extends ControllerTwig{
             }
             if (!$this->formValidator->isNotEmpty($post["username"])){
                 $errors["username"] = "Ce champ ne peut pas être vide";
+            }
+            if ($post["username"] != $data["username"]){
+                $errors["username"] = "Cet utlisateur est inconnu";
             }
             if (!$this->formValidator->isNotEmpty($post["password"])){
                 $errors["password"] = "Ce champ ne peut pas être vide";

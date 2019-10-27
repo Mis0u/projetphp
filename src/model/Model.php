@@ -2,11 +2,13 @@
 
 namespace Src\Model;
 
-abstract class Model{
+abstract class Model
+{
 
   private $bdd;
 
-    protected function executeRequest($data, $param = null) {
+    protected function executeRequest($data, $param = null)
+    {
         if ($param == null){
             $result = $this->getBdd()->query($data);
         }else{
@@ -16,7 +18,8 @@ abstract class Model{
         return $result;
     }
 
-    private function getBdd(){
+    private function getBdd()
+    {
         if ($this->bdd == null) {
         $this->bdd= new \PDO("mysql:host=localhost;dbname=blog_jf;charset=utf8",'root',"", array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
         }

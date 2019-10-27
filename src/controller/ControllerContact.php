@@ -6,14 +6,15 @@ use Lib\ControllerTwig;
 use Lib\FormValidator;
 
 
-class ControllerContact extends ControllerTwig {
+class ControllerContact extends ControllerTwig
+{
 
     private $recipient = "blog.jforteroche@gmail.com";
     private $subject = "Message en provenance du blog";
 
     public function contact()
     {   
-        $errors = [];
+      $errors = [];
         if ($this->request->getMethod() == "POST"){
             $post = $this->request->getPost();
             if (($this->formValidator->isNotEmpty($post)) && ($this->formValidator->isNotEmpty($post["name"])) && ($this->formValidator->isNotEmpty($post["mail"])) && ($this->formValidator->mail($post["mail"])) && ($this->formValidator->isNotEmpty($post["message"]))){

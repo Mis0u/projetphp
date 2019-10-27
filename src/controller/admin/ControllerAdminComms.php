@@ -4,9 +4,10 @@ namespace Src\Controller\admin;
 use Lib\ControllerTwig;
 use Src\Model\CommentsModel;
 
-class ControllerAdminComms extends ControllerTwig{
-
-    public function displayComms($idArticle){
+class ControllerAdminComms extends ControllerTwig
+{
+    public function displayComms($idArticle)
+    {
         $comms = new CommentsModel();
         $displayComms = $comms->getAllComments($idArticle);
         $comments = new CommentsModel();
@@ -14,9 +15,11 @@ class ControllerAdminComms extends ControllerTwig{
         $viewComms= $this->render("admin/viewAdminComments.html.twig",["comments" => $displayComms, "countComms" => $countComments]);
     }
 
-    public function deleteComm($idComm){
-        $comms = new CommentsModel();
-        $deleteComm = $comms->deleteComm($idComm);
-        header("Location: /admin/auth");
+    public function deleteComm($idComm)
+    {
+        $comment = new CommentsModel();
+        $getIdArticle = $comment->getIdArticleFromCom($idComm);
+        $deleteComm = $comment->deleteComm($idComm);
+        header("Location: /admin/comments/$getIdArticle[0]");
     }
 }

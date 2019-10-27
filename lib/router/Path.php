@@ -2,18 +2,20 @@
 
 namespace Lib\router;
 
-class Path{
-
+class Path
+{
     private $callable;
     private $path;
     private $matches;
 
-    public function __construct($path, $callable){
+    public function __construct($path, $callable)
+    {
         $this->path = trim($path,"/");
         $this->callable = $callable;
     }
 
-    public function match($url){
+    public function match($url)
+    {
         $url = trim($url, "/");
         $path = preg_replace("#:([\w]+)#","([^/]+)", $this->path);
         $regex = "#^$path$#";
@@ -26,7 +28,8 @@ class Path{
         return true;
     }
 
-    public function call($request){
+    public function call($request)
+    {
        if(is_string($this->callable)){
         $params = explode("+", $this->callable);
 

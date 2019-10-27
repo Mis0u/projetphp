@@ -5,7 +5,6 @@ use Lib\FormValidator;
 
 abstract class ControllerTwig
 {
-
     private $loader;
     private $twig;
     private $truncate;

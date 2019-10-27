@@ -8,34 +8,39 @@ use Src\Model\CommentsModel;
 use Src\Controller\admin\ControllerDisconnect;
 
 
-class ControllerAdmin extends ControllerTwig{
-
-        public function access(){
+class ControllerAdmin extends ControllerTwig
+{
+        public function access()
+        {
             $admin = $this->admin();
         }
 
-        public function delete($idArticle){
+        public function delete($idArticle)
+        {
             $admin = new Admin();
             $delete = $admin->delete($idArticle);
             header("Location: /admin/auth");
         }
 
-        public function deleteComm($idComm){
+        public function deleteComm($idComm)
+        {
             $admin = new Admin();
             $deleteComm = $admin->deleteComm($idComm);
             header("Location: /admin/auth");
         }
 
-        public function disconnect(){
+        public function disconnect()
+        {
             $control = new ControllerDisconnect();
             $disconnect = $control->disconnect(); 
         }
 
        
-        private function admin(){
+        private function admin()
+        {
             if ($_SESSION["access"] != "confirmed"){
                 header("Location: /");
-            } else{
+            } else {
                 $articleModel = new ArticleModel();
                 $articles = $articleModel->getArticles();
                 $comments = new CommentsModel();

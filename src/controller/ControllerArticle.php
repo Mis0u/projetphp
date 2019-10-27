@@ -6,12 +6,13 @@ use Lib\ControllerTwig;
 use Src\Model\ArticleModel;
 use Src\Model\CommentsModel;
 
-class ControllerArticle extends ControllerTwig{
-
+class ControllerArticle extends ControllerTwig
+{
   private $errors = [];
   const COMMENT_PER_PAGE = 5;
 
-  public function getComments($idArticle){
+  public function getComments($idArticle)
+  {
     $article = new ArticleModel();
     $displayArticle = $article->getArticle($idArticle);
     $comments =  new CommentsModel();  
@@ -22,11 +23,13 @@ class ControllerArticle extends ControllerTwig{
     $commentsArticle = $this->render('viewArticle.html.twig', ["comms" => $displayComments, "nbPages" => $nbPages, "article" => $displayArticle, "errors" => $this->errors, "session" => $_SESSION,"actualPage" =>$getPage]);  
   }
 
-  private function getFirstResult($idArticle, $nbPages){    
+  private function getFirstResult($idArticle, $nbPages)
+  {    
     return ($this->currentPage($nbPages) - 1) * self::COMMENT_PER_PAGE ;
   }
 
-  private function currentPage($nbPages){
+  private function currentPage($nbPages)
+  {
     $get = $this->request->getGet();
     if(isset($get['page']) AND $this->formValidator->isNotEmpty($get['page'])){
       $currentPage = intval($get['page']);
@@ -36,7 +39,8 @@ class ControllerArticle extends ControllerTwig{
     return 1;
   }
 
-  private function postComm($idArticle){
+  private function postComm($idArticle)
+  {
     if ($this->request->getMethod() == "POST"){
       $post = $this->request->getPost();
       if ($this->formValidator->isNotEmpty($post)

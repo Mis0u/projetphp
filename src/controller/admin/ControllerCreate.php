@@ -5,11 +5,12 @@ use Lib\ControllerTwig;
 use Src\Model\Admin;
 use Lib\Upload;
 
-class ControllerCreate extends ControllerTwig{
-    
+class ControllerCreate extends ControllerTwig
+{
     private $errors = [];
 
-    public function create(){
+    public function create()
+    {
         if ($this->request->getMethod() == "POST"){
             $post = $this->request->getPost();
             if ($this->formValidator->isNotEmpty($post)

@@ -645,15 +645,12 @@ footer p{
   .global.article form{
     width:100%;
   }
-  .global.article section{
-    margin-top:40px;
-  }
 
   .about section .autor-content{
     height: 380px;
   }
 
-  section{margin-top: 52px;}
+  section{margin-top: 110px;}
 }
 
 @media screen and (max-width: 540px){

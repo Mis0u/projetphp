@@ -4,10 +4,11 @@ namespace Src\Controller;
 
 use Lib\ControllerTwig;
 
-class ControllerAbout extends ControllerTwig {
+class ControllerAbout extends ControllerTwig
+{
 
-  public function about(){
+  public function about()
+  {
      $about = $this->render('viewAbout.html.twig');
-    }
-
+  }
 }

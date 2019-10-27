@@ -2,9 +2,10 @@
 
 namespace Lib;
 
-class Upload{
-
-    public function addImage($fileName){
+class Upload
+{
+    public function addImage($fileName)
+    {
         if ($_FILES[$fileName] != NULL AND $_FILES[$fileName]['error'] == 0){
             if ($_FILES[$fileName]['size'] <= 1048576){
                 $fileInfos = pathinfo($_FILES[$fileName]['name']);

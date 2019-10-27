@@ -7,7 +7,6 @@ use Lib\ControllerTwig;
 
 class ControllerHomepage extends ControllerTwig 
 {
-
     public function homepage()
     {
         $articleModel = new ArticleModel();
