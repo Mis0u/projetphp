@@ -27,13 +27,13 @@ class ControllerAdminLog extends ControllerTwig
             if (!$this->formValidator->isNotEmpty($post["username"])){
                 $errors["username"] = "Ce champ ne peut pas être vide";
             }
-            if ($post["username"] != $data["username"]){
+            elseif ($post["username"] != $data["username"]){
                 $errors["username"] = "Cet utlisateur est inconnu";
             }
-            if (!$this->formValidator->isNotEmpty($post["password"])){
+            elseif (!$this->formValidator->isNotEmpty($post["password"])){
                 $errors["password"] = "Ce champ ne peut pas être vide";
             }
-            if(!password_verify($post["password"],$data["userpass"])){
+            elseif(!password_verify($post["password"],$data["userpass"])){
                 $errors["password"] = "Ce mot de passe n'est pas valide";
             }
         }
