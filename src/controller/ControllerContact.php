@@ -24,16 +24,16 @@ class ControllerContact extends ControllerTwig
     
                  mail($this->recipient,$this->subject, $content);
             }
-            if(!$this->formValidator->isNotEmpty($post["name"])){
+            elseif(!$this->formValidator->isNotEmpty($post["name"])){
                 $errors["name"] = "Vous devez indiquer votre nom";
               }
-            if(!$this->formValidator->isNotEmpty($post["message"])){
+            elseif(!$this->formValidator->isNotEmpty($post["message"])){
                 $errors["message"] = "Vous devez écrire votre message";
               }
-            if(!$this->formValidator->isNotEmpty($post["mail"])){
+            elseif(!$this->formValidator->isNotEmpty($post["mail"])){
                 $errors["mail"] = "Vous devez indiquer votre mail";
               }
-            if(!$this->formValidator->mail($post["mail"])){
+            elseif(!filter_var($post["mail"],FILTER_VALIDATE_EMAIL)){
                 $errors["mail"] = "Veuillez indiquer une adresse email valide";
             }
         }
