@@ -7,5 +7,5 @@ Pour travailler sur ce projet, vous devez :
 
 Pour accèder à l'admin :
 
-user : jeanF
-password: kangourou
+- user : jeanF
+- password: kangourou
