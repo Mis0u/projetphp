@@ -22,4 +22,11 @@ class ControllerAdminComms extends ControllerTwig
         $deleteComm = $comment->deleteComm($idComm);
         header("Location: /admin/comments/$getIdArticle[0]");
     }
+
+    public function deleteAlertComm($idComm)
+    {
+        $comment = new CommentsModel();
+        $delete = $comment->deleteComm($idComm);
+        header("Location: /admin/auth");
+    }
 }

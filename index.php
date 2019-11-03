@@ -4,7 +4,7 @@ session_start();
 require "vendor/autoload.php";
 
 use Lib\Http\Request;
-use Lib\router\Router;
+use Lib\Router\Router;
 
 
 $request = new Request($_GET, $_POST, $_SERVER);
@@ -24,6 +24,7 @@ $router->getRoutes("admin/update/:id", "admin\\ControllerUpdate+pageUpdate");
 $router->getRoutes("admin/delete/:id", "admin\\ControllerAdmin+delete");
 $router->getRoutes("admin/comments/:id", "admin\\ControllerAdminComms+displayComms");
 $router->getRoutes("admin/delete/comm/:id", "admin\\ControllerAdminComms+deleteComm");
+$router->getRoutes("admin/delete/alertcomm/:id", "admin\\ControllerAdminComms+deleteAlertComm");
 $router->getRoutes("admin/authorize/comm/:id", "admin\\ControllerAuthorizeComm+authorizeComm");
 $router->getRoutes("admin/create", "admin\\ControllerCreate+create");
 $router->run();

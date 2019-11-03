@@ -63,7 +63,7 @@
                         <h2>Poster un commentaire</h2>
                         <div class="name input-field">
                                 <label for="name"> Votre nom : *</label>
-                                <input name="name" id="name" type="text" class="validate">
+                                <input name="name" id="name" type="text" class="validate" required>
                                 {% if errors.name is defined %}
                                 <span class="error">{{errors.name}}</span>
                                 {% endif %}
